@@ -1,9 +1,8 @@
 # RPA(UiPath) & AI : Insurance Fraud Detection Use Cases
 
 ## Description:
-Insurance Fraud Detection is a sample use case that integrates RPA (UiPath) & AI in solving  
-real world business process. This use case use an open source dataset for demo purpose. The description explains how 
-the workflow works.  
+Insurance Fraud Detection is a sample use case that integrates RPA (UiPath) & AI in solving real world business process.  
+This use case uses an open source dataset for demo purpose. The description below explains how the workflow works.  
 
 ## File Description:  
 **Main.xaml:** The main entry point. This is the main workflow to execute.  
@@ -19,28 +18,23 @@ It generated json format POST request and sent to model server, then it wait for
 Thats response will be inference result.  
 
 **Take Note**  
-If you intend to customize your own workflow by leveraging this demo, please ignore "Read_Claims-forms.xaml" and 
-create your own forms extraction workflow. "Konduit_model_server.xaml" can be leverage but please keep in mind that 
-you have to modify the POST request input variable.
+If you intend to customize the workflow by leveraging this demo, do replace "ReadClaimForms.xaml" with your respective claim forms extraction workflow. You can continue to use "GetInferenceResults.xaml" but do remember to modify the POST request input variable.
  
 ## Model Serving :  
-Konduit is a serving system and framework focused on deploying machine learning pipelines to production.  
-The strength of konduit model serving system is it able to serve any python machine learning framework and DL4J framework.  
-These framework are included tensorflow, keras, scikit-learn, Pytorch, DL4J and etc.  
+Konduit-Serving is a serving system and framework focused on deploying machine learning pipelines to production.  
+The strength of konduit model serving system is it able to serve wide varieties of python machine learning framework and DL4J framework. 
+These framework are included Tensorflow, Keras, DL4J and etc.  
 If you wish to know more about Konduit model serving, please refer to the below github page:  
 **https://github.com/KonduitAI/konduit-serving**  
-&nbsp;  
-&nbsp;  
+
 ### To customize your own script(python):  
 &nbsp;  
-**-----** **assumming you have machine learning knowledge to train a model.**  **-----**
 &nbsp;  
-&nbsp;  
-Similar to how you perform inference(prediction), you written a python script that serve your model.  
+Similar to how you perform inference(prediction), you can write a python script to serve your model.  
 &nbsp;     
 &nbsp;  
 &nbsp;  
-*********** **example (in Python Tensorflow):** ***********    
+### Example in Python with Tensorflow Model
 ![Python Script Example](img/pythonscriptexample.png "Python Script Example")  
 &nbsp;  
 You will notice that in the picture above consist of red boxes and green boxes. These 2 boxes contain variable that is needed by konduit model serving system in  
@@ -90,7 +84,7 @@ please follow the steps below.
 &nbsp;  
 ### Preserve Workflow (just use it) :  
 &nbsp;  
-![Preserve Workflow (mandatory)](Images/preserveworkflow.png "Preserve Workflow (mandatory)")  
+![Preserve Workflow (mandatory)](img/preserveworkflow.png "Preserve Workflow (mandatory)")  
 &nbsp;  
 "Initiate_Model_Server.xaml" is a mandatory workflow that needed to be initiated before any other workflow started. There are nothing much needed to be change in 
 "Initiate_Model_Server.xaml" workflow. if you are using your own python script to serve, please refer above "Model Serving" steps to understand how to configure your 
