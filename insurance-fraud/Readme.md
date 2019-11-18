@@ -27,30 +27,26 @@ These framework are included Tensorflow, Keras, DL4J and etc.
 If you wish to know more about Konduit model serving, please refer to the below github page:  
 **https://github.com/KonduitAI/konduit-serving**  
 
-### To customize your own script(python):  
-&nbsp;  
-&nbsp;  
+### To customize your own script(python):    
+
 Similar to how you perform inference(prediction), you can write a python script to serve your model.  
-&nbsp;     
-&nbsp;  
-&nbsp;  
+
 ### Example in Python with Tensorflow Model
 ![Python Script Example](img/pythonscriptexample.png "Python Script Example")  
-&nbsp;  
-You will notice that in the picture above consist of red boxes and green boxes. These 2 boxes contain variable that is needed by konduit model serving system in  
-insurance fraud detection demo.  
-&nbsp;  
-&nbsp;  
+
+You will notice that in the picture above consist of red boxes and green box. These 2 boxes contain variables which is needed by Konduit-Serving for the insurance fraud detection demo.  
+
 **Red box:**  
 - **myinput** & **model_path** is the input variable that define when serving python script.  
 
 **Green box:**  
 - **PredictedClass** , **Confidence** &  **output** is the output variable that define when serving python script.  
 &nbsp;  
-*********** **These variable is needed to be specified in the konduit model serving config file(.json)**   ***********  
+### Note: These variables are necessary to be specified in the Konduit-Serving configuration file (.json)
+### In this case: The configuration file is named inference-fraud-config*.json
 &nbsp;  
 &nbsp;  
-*********** **example (in konduit model serving config file) :** ***********  
+### Example showing configuration file for Konduit-Serving  
 &nbsp;  
 &nbsp;  
 &nbsp;  
