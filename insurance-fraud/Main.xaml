@@ -44,15 +44,16 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Main Workflow" sap:VirtualizedContainerService.HintSize="375.2,308.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Default="KonduitServingOps\\" Name="konduitPath" />
-      <Variable x:TypeArguments="x:String" Default="ClaimFormOps\\" Name="claimPath" />
-      <Variable x:TypeArguments="x:String" Default="DistroOps\\" Name="distroOpsPath" />
-      <Variable x:TypeArguments="x:String" Default="distro\\" Name="distroPath" />
-      <Variable x:TypeArguments="x:String" Default="data\\" Name="dataPath" />
+      <Variable x:TypeArguments="x:String" Default="KonduitServingOps\" Name="konduitPath" />
+      <Variable x:TypeArguments="x:String" Default="ClaimFormOps\" Name="claimPath" />
+      <Variable x:TypeArguments="x:String" Default="DistroOps\" Name="distroOpsPath" />
+      <Variable x:TypeArguments="x:String" Default="distro\" Name="distroPath" />
+      <Variable x:TypeArguments="x:String" Default="data\" Name="dataPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -61,46 +62,36 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ConfigureKonduitServing workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="[konduitPath +&quot;ConfigureKonduitServing.xaml&quot;]">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="argClaimPath">
+        <InArgument x:TypeArguments="x:String" x:Key="argClaimPath">[claimPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argDistroOpsPath">[distroOpsPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argKonduitPath">[konduitPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argDistroPath">[distroPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argDataPath">[dataPath]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ReadClaimForms workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="[claimPath + &quot;ReadClaimForms.xaml&quot;]">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="argClaimFormsDir">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Directory.GetCurrentDirectory() + &quot;\&quot; + dataPath + &quot;ClaimForms\&quot;">
+            <mva:VisualBasicValue.Result>
+              <OutArgument x:TypeArguments="x:String" />
+            </mva:VisualBasicValue.Result>
+          </mva:VisualBasicValue>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argClaimOpsDir">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="claimPath">
             <mva:VisualBasicValue.Result>
               <OutArgument x:TypeArguments="x:String" />
             </mva:VisualBasicValue.Result>
           </mva:VisualBasicValue>
         </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="argDistroOpsPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="distroOpsPath">
-            <mva:VisualBasicValue.Result>
-              <OutArgument x:TypeArguments="x:String" />
-            </mva:VisualBasicValue.Result>
-          </mva:VisualBasicValue>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="argKonduitPath">
+        <InArgument x:TypeArguments="x:String" x:Key="argKonduitOpsPath">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="konduitPath">
             <mva:VisualBasicValue.Result>
               <OutArgument x:TypeArguments="x:String" />
             </mva:VisualBasicValue.Result>
           </mva:VisualBasicValue>
         </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="argDistroPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="distroPath">
-            <mva:VisualBasicValue.Result>
-              <OutArgument x:TypeArguments="x:String" />
-            </mva:VisualBasicValue.Result>
-          </mva:VisualBasicValue>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="argDataPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="dataPath">
-            <mva:VisualBasicValue.Result>
-              <OutArgument x:TypeArguments="x:String" />
-            </mva:VisualBasicValue.Result>
-          </mva:VisualBasicValue>
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ReadClaimForms workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="[claimPath + &quot;ReadClaimForms.xaml&quot;]">
-      <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
