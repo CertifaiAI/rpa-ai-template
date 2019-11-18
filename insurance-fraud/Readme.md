@@ -10,20 +10,21 @@ This use case uses an open source dataset for demo purpose. The description belo
 **ConfigureKonduitServing.xaml:** This is the primary workflow to initiate Konduit-serving model server.
 It handle model server folder exitstance, download, process id checking and start up model serving system.    
 
-**ReadClaimForms.xaml:** This is the primary workflow for insurance fraud detection demo, it handle forms reading, 
+**ReadClaimForms.xaml:** This is the primary workflow for insurance fraud detection demo, it handles forms reading, 
 features extraction, data convertion and result display.  
 
-**GetInferenceResults.xaml:** This workflow handle the interaction between RPA and Konduit-serving system. 
-It generated json format POST request and sent to model server, then it wait for server to return an response in json format.
-Thats response will be inference result.  
+**GetInferenceResults.xaml:** This workflow handles the interaction between RPA and Konduit-serving system. 
+It generates json format POST request and sent to model server, then it wait for server to return an response in json format.
+The returned response is the inference result.  
 
 **Take Note**  
-If you intend to customize the workflow by leveraging this demo, do replace "ReadClaimForms.xaml" with your respective claim forms extraction workflow. You can continue to use "GetInferenceResults.xaml" but do remember to modify the POST request input variable.
+If you intend to customize the workflow by leveraging this demo, do replace "ReadClaimForms.xaml" with your respective claim forms extraction workflow. You can continue to use "GetInferenceResults.xaml" but remember to modify the POST request input variable.
  
 ## Model Serving :  
 Konduit-Serving is a serving system and framework focused on deploying machine learning pipelines to production.  
 The strength of konduit model serving system is it able to serve wide varieties of python machine learning framework and DL4J framework. 
 These framework are included Tensorflow, Keras, DL4J and etc.  
+&nbsp;   
 If you wish to know more about Konduit model serving, please refer to the below github page:  
 **https://github.com/KonduitAI/konduit-serving**  
 
@@ -37,27 +38,19 @@ Similar to how you perform inference(prediction), you can write a python script 
 You will notice that in the picture above consist of red boxes and green box. These 2 boxes contain variables which is needed by Konduit-Serving for the insurance fraud detection demo.  
 
 **Red box:**  
-- **myinput** & **model_path** is the input variable that define when serving python script.  
+- **myinput** & **model_path** are the input variables that define when serving python script.  
 
 **Green box:**  
-- **PredictedClass** , **Confidence** &  **output** is the output variable that define when serving python script.  
+- **PredictedClass** , **Confidence** &  **output** are the output variables that define when serving python script.  
 &nbsp;  
-### Note: These variables are necessary to be specified in the Konduit-Serving configuration file (.json)
-### In this case: The configuration file is named inference-fraud-config*.json
-&nbsp;  
+**Note: These variables are necessary to be specified in the Konduit-Serving configuration file (.json)
+In this demo: The configuration file is named inference-fraud-config*.json**
 &nbsp;  
 ### Example showing configuration file for Konduit-Serving  
 &nbsp;  
-&nbsp;  
-&nbsp;  
 ![Konduit-Serving](img/konduitserving.png "Konduit-Serving")  
 &nbsp;  
-While these variable already specified in the konduit model serving configuration file, when client side is performing POST request to konduit model servering system,  
-konduit model serving system will find for the specific variable (input variable) in python script and pass in value to it.  
-During response phase, after konduit model serving system successfully execute the serving python script, it will gather variable content (output variable) that specified  
-in the model serving configuration, return in json format to the client side (POST request).  
-&nbsp;    
-&nbsp;    
+Since the variables above already specified in the Konduit-Serving configuration file, the python script will be executed during a POST request and the specified values will be returned in json format to the client side.  
 &nbsp;    
 ### **Sample POST request input (json) :**   
 &nbsp;  
@@ -68,15 +61,9 @@ in the model serving configuration, return in json format to the client side (PO
 &nbsp;  
 ![Client Output Sample (json format)](img/jsonPOSToutput.png "Client Output Sample (json format)") 
 &nbsp;  
-&nbsp;  
-&nbsp;  
 ## RPA(UiPath) Workflow :  
 &nbsp;  
-RPA workflow for Insurance fraud detection demo is created based on synthetic generated insurance claims form as actual form is highly confidential, this demo 
-will only able to use open source dataset for the workflow. By applying the similar concept of extracting variable from various type of forms (excel, web forms, 
-pdf & etc.), this demo intended to proof the feasiblity of RPAxAI workflow. If any user's intended to modify this demo to fit to their own business process, 
-please follow the steps below.  
-&nbsp;  
+RPA workflow for Insurance fraud detection demo is created based on a readily available dataset. By applying the similar concept of extracting variable from various type of forms (excel, web forms, pdf & etc.), this demo is intended to showcase the feasiblity of RPA workflow with AI integration. If you intend to modify this demo to fit to their own business process, please follow the steps below.  
 &nbsp;  
 ### Preserve Workflow (just use it) :  
 &nbsp;  
