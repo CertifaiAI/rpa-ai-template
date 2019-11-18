@@ -27,3 +27,7 @@ hs_err_pid*
 *.pb
 *.pth
 *.pt
+
+# folder
+distro/*
+metadata/*
