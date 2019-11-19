@@ -2280,15 +2280,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chiaw\\.nuget\\packages\\": {}
+    "C:\\Users\\TUF\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Insurance_Fraud_Detection",
       "projectName": "Insurance_Fraud_Detection",
-      "projectPath": "C:\\Users\\chiaw\\Desktop\\konduit\\rpa\\rpa-ai-template\\insurance-fraud\\.local",
-      "packagesPath": "C:\\Users\\chiaw\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chiaw\\Desktop\\konduit\\rpa\\rpa-ai-template\\insurance-fraud\\.local"
+      "projectPath": "C:\\Users\\TUF\\Desktop\\rpa_ai_folder\\insurance-fraud\\.local",
+      "packagesPath": "C:\\Users\\TUF\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\TUF\\Desktop\\rpa_ai_folder\\insurance-fraud\\.local"
     },
     "frameworks": {
       "net461": {
