@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>621.6,926.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>621.6,1019.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>check_server_status_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -56,9 +56,10 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Check Server Status" sap:VirtualizedContainerService.HintSize="601.6,866.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Check Server Status" sap:VirtualizedContainerService.HintSize="601.6,959.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sco:Collection(sd:Process)" Name="allprocess" />
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="status_cond" />
@@ -70,29 +71,36 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:GetProcesses ContinueOnError="{x:Null}" DisplayName="Get Processes" sap:VirtualizedContainerService.HintSize="560,22.4" sap2010:WorkflowViewState.IdRef="GetProcesses_1" Processes="[allprocess]" />
-    <ui:ReadTextFile Content="[pid_string]" DisplayName="Read Text File" FileName="[argDistroPath__ + &quot;pipelines.pid&quot;]" sap:VirtualizedContainerService.HintSize="560,134.4" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:ForEach x:TypeArguments="sd:Process" CurrentIndex="{x:Null}" DisplayName="For each" sap:VirtualizedContainerService.HintSize="560,436.8" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[allprocess]">
+    <ui:ReadTextFile Content="[pid_string]" DisplayName="Read Text File" FileName="[Directory.GetCurrentDirectory() + &quot;\KonduitServingOps\pipelines.pid&quot;]" sap:VirtualizedContainerService.HintSize="560,134.4" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:ForEach x:TypeArguments="sd:Process" CurrentIndex="{x:Null}" DisplayName="For each" sap:VirtualizedContainerService.HintSize="560,529.6" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[allprocess]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="sd:Process">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:Process" Name="item" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,302.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,395.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[item.Id = Convert.ToInt32(pid_string)]" sap:VirtualizedContainerService.HintSize="483.2,209.6" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[item.Id = Convert.ToInt32(pid_string)]" sap:VirtualizedContainerService.HintSize="483.2,302.4" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:Boolean">[status_cond]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                  </Assign.Value>
-                </Assign>
+                <Sequence sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[status_cond]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
               </If.Then>
             </If>
           </Sequence>

@@ -98,7 +98,7 @@
       </Assign.Value>
     </Assign>
     <ui:PathExists DisplayName="Checking Pipelines Folder Exits" Exists="[distroExists]" sap:VirtualizedContainerService.HintSize="794.4,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[argDistroOpsPath]" PathType="Folder" />
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Open_Notepad.exe workflow" sap:VirtualizedContainerService.HintSize="794.4,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="[argClaimPath + &quot;OpenNotePad.xaml&quot;]">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Open_Notepad.exe workflow" sap:VirtualizedContainerService.HintSize="794.4,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="ClaimFormOps\OpenNotePad.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
@@ -111,43 +111,13 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Start_Konduit_Serving workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="[argKonduitPath + &quot;StartKonduitServing.xaml&quot;]">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Start_Konduit_Serving workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="KonduitServingOps\StartKonduitServing.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="argKonduitPath_">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argKonduitPath">
-                  <mva:VisualBasicValue.Result>
-                    <OutArgument x:TypeArguments="x:String" />
-                  </mva:VisualBasicValue.Result>
-                </mva:VisualBasicValue>
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="argJavaFile">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="javaFile">
-                  <mva:VisualBasicValue.Result>
-                    <OutArgument x:TypeArguments="x:String" />
-                  </mva:VisualBasicValue.Result>
-                </mva:VisualBasicValue>
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="argJavaArgument">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="args">
-                  <mva:VisualBasicValue.Result>
-                    <OutArgument x:TypeArguments="x:String" />
-                  </mva:VisualBasicValue.Result>
-                </mva:VisualBasicValue>
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="argDistroPath_">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argDistroPath">
-                  <mva:VisualBasicValue.Result>
-                    <OutArgument x:TypeArguments="x:String" />
-                  </mva:VisualBasicValue.Result>
-                </mva:VisualBasicValue>
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="argDataPath_">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argDataPath">
-                  <mva:VisualBasicValue.Result>
-                    <OutArgument x:TypeArguments="x:String" />
-                  </mva:VisualBasicValue.Result>
-                </mva:VisualBasicValue>
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argKonduitPath_">[argKonduitPath]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argJavaFile">[javaFile]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argJavaArgument">[args]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argDistroPath_">[argDistroPath]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argDataPath_">[argDataPath]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
@@ -159,61 +129,25 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Download and extract server to zip file" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="[argDistroOpsPath + &quot;DownloadDistro.xaml&quot;]">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Download and extract server to zip file" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="DistroOps\DownloadDistro.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_FileURL">https://github.com/KonduitAI/mailboxdetection-workflow/releases/download/v1.1/distro.zip</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ExtractPath">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Directory.GetCurrentDirectory()">
-                  <mva:VisualBasicValue.Result>
-                    <OutArgument x:TypeArguments="x:String" />
-                  </mva:VisualBasicValue.Result>
-                </mva:VisualBasicValue>
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ExtractPath">[Directory.GetCurrentDirectory()]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Start_Konduit_Serving workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="[argKonduitPath +&quot;StartKonduitServing.xaml&quot;]">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Start_Konduit_Serving workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="KonduitServingOps\StartKonduitServing.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="argKonduitPath_">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argKonduitPath">
-                  <mva:VisualBasicValue.Result>
-                    <OutArgument x:TypeArguments="x:String" />
-                  </mva:VisualBasicValue.Result>
-                </mva:VisualBasicValue>
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="argJavaFile">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="javaFile">
-                  <mva:VisualBasicValue.Result>
-                    <OutArgument x:TypeArguments="x:String" />
-                  </mva:VisualBasicValue.Result>
-                </mva:VisualBasicValue>
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="argsment">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="args">
-                  <mva:VisualBasicValue.Result>
-                    <OutArgument x:TypeArguments="x:String" />
-                  </mva:VisualBasicValue.Result>
-                </mva:VisualBasicValue>
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="argDistroPath_">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argDistroPath">
-                  <mva:VisualBasicValue.Result>
-                    <OutArgument x:TypeArguments="x:String" />
-                  </mva:VisualBasicValue.Result>
-                </mva:VisualBasicValue>
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="argDataPath_">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argDataPath">
-                  <mva:VisualBasicValue.Result>
-                    <OutArgument x:TypeArguments="x:String" />
-                  </mva:VisualBasicValue.Result>
-                </mva:VisualBasicValue>
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argKonduitPath_">[argKonduitPath]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argJavaFile">[javaFile]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argsment">[args]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argDistroPath_">[argDistroPath]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argDataPath_">[argDataPath]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
       </If.Else>
     </If>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Close_Notepad.exe workflow" sap:VirtualizedContainerService.HintSize="794.4,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="[argClaimPath + &quot;CloseNotepad.xaml&quot;]">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Close_Notepad.exe workflow" sap:VirtualizedContainerService.HintSize="794.4,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="ClaimFormOps\CloseNotepad.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>

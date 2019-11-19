@@ -59,6 +59,7 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Read_excel" sap:VirtualizedContainerService.HintSize="398.4,1036" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -76,20 +77,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Start Process Excel_File" FileName="[excel_path]" sap:VirtualizedContainerService.HintSize="356.8,88" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
-    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'Win+up'" sap:VirtualizedContainerService.HintSize="356.8,156" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="up" KeyModifiers="Win" SpecialKey="True">
-      <ui:SendHotkey.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="9f4e0e4a80ada9c12eea2ab8e0dfb73f" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='Insurance Claims Form*' /&gt;&lt;uia cls='MsoCommandBar' idx='2' /&gt;&lt;uia cls='NetUIOfficeCaption' name='‪Insurance Claims Form*' /&gt;">
-          <ui:Target.TimeoutMS>
-            <InArgument x:TypeArguments="x:Int32" />
-          </ui:Target.TimeoutMS>
-          <ui:Target.WaitForReady>
-            <InArgument x:TypeArguments="ui:WaitForReady" />
-          </ui:Target.WaitForReady>
-        </ui:Target>
-      </ui:SendHotkey.Target>
-    </ui:SendHotkey>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="GetEachValue workflow" sap:VirtualizedContainerService.HintSize="356.8,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="[argClaimFormOpsPath + &quot;GetEachValue.xaml&quot;]">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="GetEachValue workflow" sap:VirtualizedContainerService.HintSize="356.8,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="ClaimFormOps\GetEachValue.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="s:String[]" x:Key="return_array">
           <mva:VisualBasicReference x:TypeArguments="s:String[]" ExpressionText="info_array">
@@ -105,9 +93,29 @@
             </mva:VisualBasicReference.Result>
           </mva:VisualBasicReference>
         </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="excel_path">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="excel_path">
+            <mva:VisualBasicValue.Result>
+              <OutArgument x:TypeArguments="x:String" />
+            </mva:VisualBasicValue.Result>
+          </mva:VisualBasicValue>
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="TransformInputData workflow" sap:VirtualizedContainerService.HintSize="356.8,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="[argClaimFormOpsPath + &quot;TransformInputData.xaml&quot;]">
+    <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Start Process Excel_File" FileName="[excel_path]" sap:VirtualizedContainerService.HintSize="356.8,88" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
+    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'Win+up'" sap:VirtualizedContainerService.HintSize="356.8,156" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="up" KeyModifiers="Win" SpecialKey="True">
+      <ui:SendHotkey.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="9f4e0e4a80ada9c12eea2ab8e0dfb73f" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='Insurance Claims Form*' /&gt;&lt;uia cls='MsoCommandBar' idx='2' /&gt;&lt;uia cls='NetUIOfficeCaption' name='‪Insurance Claims Form*' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:SendHotkey.Target>
+    </ui:SendHotkey>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="TransformInputData workflow" sap:VirtualizedContainerService.HintSize="356.8,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ClaimFormOps\TransformInputData.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="s:String[]" x:Key="input_array">
           <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="info_array">
@@ -139,28 +147,16 @@
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="GetInferenceResults workflow" sap:VirtualizedContainerService.HintSize="356.8,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="[argKonduitOpsPath_ + &quot;GetInferenceResults.xaml&quot;]">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="GetInferenceResults workflow" sap:VirtualizedContainerService.HintSize="356.8,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="KonduitServingOps\GetInferenceResults.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="input_string">[inference_string.ToString()]</InArgument>
         <OutArgument x:TypeArguments="njl:JObject" x:Key="Json_return">[Result_json]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="TransformOutputData workflow" sap:VirtualizedContainerService.HintSize="356.8,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="[argClaimFormOpsPath + &quot;TransformOutputData.xaml&quot;]">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="TransformOutputData workflow" sap:VirtualizedContainerService.HintSize="356.8,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="ClaimFormOps\TransformOutputData.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="file_string">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="excel_path">
-            <mva:VisualBasicValue.Result>
-              <OutArgument x:TypeArguments="x:String" />
-            </mva:VisualBasicValue.Result>
-          </mva:VisualBasicValue>
-        </InArgument>
-        <InArgument x:TypeArguments="njl:JObject" x:Key="Input_json">
-          <mva:VisualBasicValue x:TypeArguments="njl:JObject" ExpressionText="Result_json">
-            <mva:VisualBasicValue.Result>
-              <OutArgument x:TypeArguments="njl:JObject" />
-            </mva:VisualBasicValue.Result>
-          </mva:VisualBasicValue>
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="file_string">[excel_path]</InArgument>
+        <InArgument x:TypeArguments="njl:JObject" x:Key="Input_json">[Result_json]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:CloseApplication DisplayName="Close Application 'EXCEL.EXE Insurance'" sap:VirtualizedContainerService.HintSize="356.8,107.2" sap2010:WorkflowViewState.IdRef="CloseApplication_1">

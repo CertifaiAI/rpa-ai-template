@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="395.2,368.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="409.6,408.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -44,10 +44,9 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Workflow" sap:VirtualizedContainerService.HintSize="375.2,308.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Workflow" sap:VirtualizedContainerService.HintSize="389.6,308.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="KonduitServingOps\" Name="konduitPath" />
       <Variable x:TypeArguments="x:String" Default="ClaimFormOps\" Name="claimPath" />
@@ -60,16 +59,46 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ConfigureKonduitServing workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="[konduitPath +&quot;ConfigureKonduitServing.xaml&quot;]">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ConfigureKonduitServing workflow" sap:VirtualizedContainerService.HintSize="348,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="KonduitServingOps\ConfigureKonduitServing.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="argClaimPath">[claimPath]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="argDistroOpsPath">[distroOpsPath]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="argKonduitPath">[konduitPath]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="argDistroPath">[distroPath]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="argDataPath">[dataPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argClaimPath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="claimPath">
+            <mva:VisualBasicValue.Result>
+              <OutArgument x:TypeArguments="x:String" />
+            </mva:VisualBasicValue.Result>
+          </mva:VisualBasicValue>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argDistroOpsPath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="distroOpsPath">
+            <mva:VisualBasicValue.Result>
+              <OutArgument x:TypeArguments="x:String" />
+            </mva:VisualBasicValue.Result>
+          </mva:VisualBasicValue>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argKonduitPath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="konduitPath">
+            <mva:VisualBasicValue.Result>
+              <OutArgument x:TypeArguments="x:String" />
+            </mva:VisualBasicValue.Result>
+          </mva:VisualBasicValue>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argDistroPath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="distroPath">
+            <mva:VisualBasicValue.Result>
+              <OutArgument x:TypeArguments="x:String" />
+            </mva:VisualBasicValue.Result>
+          </mva:VisualBasicValue>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argDataPath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="dataPath">
+            <mva:VisualBasicValue.Result>
+              <OutArgument x:TypeArguments="x:String" />
+            </mva:VisualBasicValue.Result>
+          </mva:VisualBasicValue>
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ReadClaimForms workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="[claimPath + &quot;ReadClaimForms.xaml&quot;]">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ReadClaimForms workflow" sap:VirtualizedContainerService.HintSize="348,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="ClaimFormOps\ReadClaimForms.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="argClaimFormsDir">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Directory.GetCurrentDirectory() + &quot;\&quot; + dataPath + &quot;ClaimForms\&quot;">

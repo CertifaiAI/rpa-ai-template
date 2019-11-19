@@ -56,6 +56,7 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Transformation" sap:VirtualizedContainerService.HintSize="1024.8,1396.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -805,7 +806,7 @@
                                                                                                                                           <av:PointCollection x:Key="ConnectorLocation">100,966.4 100,996.4 210,996.4 210,940 240,940</av:PointCollection>
                                                                                                                                         </scg:Dictionary>
                                                                                                                                       </sap:WorkflowViewStateService.ViewState>
-                                                                                                                                      <While DisplayName="Input data pre-processing" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="While_2">
+                                                                                                                                      <While DisplayName="Input data pre-processing" sap:VirtualizedContainerService.HintSize="1116,1279.2" sap2010:WorkflowViewState.IdRef="While_2">
                                                                                                                                         <While.Variables>
                                                                                                                                           <Variable x:TypeArguments="x:Int32" Default="0" Name="i" />
                                                                                                                                         </While.Variables>
@@ -815,7 +816,7 @@
                                                                                                                                           </scg:Dictionary>
                                                                                                                                         </sap:WorkflowViewStateService.ViewState>
                                                                                                                                         <While.Condition>[i &lt; input_array.Length()]</While.Condition>
-                                                                                                                                        <Sequence sap:VirtualizedContainerService.HintSize="1029.6,1007.2" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                                                                                                                        <Sequence sap:VirtualizedContainerService.HintSize="1071.2,1120" sap2010:WorkflowViewState.IdRef="Sequence_34">
                                                                                                                                           <Sequence.Variables>
                                                                                                                                             <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Name="temp_dic" />
                                                                                                                                           </Sequence.Variables>
@@ -824,7 +825,7 @@
                                                                                                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                                                                             </scg:Dictionary>
                                                                                                                                           </sap:WorkflowViewStateService.ViewState>
-                                                                                                                                          <Assign sap:VirtualizedContainerService.HintSize="988,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                                                                                                                          <Assign sap:VirtualizedContainerService.HintSize="1029.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
                                                                                                                                             <Assign.To>
                                                                                                                                               <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)[]">[array_of_dic]</OutArgument>
                                                                                                                                             </Assign.To>
@@ -832,7 +833,7 @@
                                                                                                                                               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)[]">[{months_as_customer, age, policy_state, policy_csl, policy_deductable, policy_annual_premium, umbrella_limit, insured_sex, insured_education_level, insured_occupation, insured_hobbies, insured_relationship, capital_gains, capital_loss, incident_type, collision_type, incident_severity, authorities_contacted, incident_state, incident_city, incident_hour_of_the_day, number_of_vehicles_involved, property_damage, bodily_injuries, witnesses, police_report_available, total_claim_amount, injury_claim, property_claim, vehicle_claim, auto_make, auto_year}]</InArgument>
                                                                                                                                             </Assign.Value>
                                                                                                                                           </Assign>
-                                                                                                                                          <Assign sap:VirtualizedContainerService.HintSize="988,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                                                                                                                          <Assign sap:VirtualizedContainerService.HintSize="1029.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
                                                                                                                                             <Assign.To>
                                                                                                                                               <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)">[temp_dic]</OutArgument>
                                                                                                                                             </Assign.To>
@@ -840,9 +841,9 @@
                                                                                                                                               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)">[array_of_dic(i)]</InArgument>
                                                                                                                                             </Assign.Value>
                                                                                                                                           </Assign>
-                                                                                                                                          <If Condition="[temp_dic.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="988,614.4" sap2010:WorkflowViewState.IdRef="If_1">
+                                                                                                                                          <If Condition="[temp_dic.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="1029.6,727.2" sap2010:WorkflowViewState.IdRef="If_1">
                                                                                                                                             <If.Then>
-                                                                                                                                              <Sequence DisplayName="get_item_from_dic" sap:VirtualizedContainerService.HintSize="610.4,464.8" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                                                                                                                              <Sequence DisplayName="get_item_from_dic" sap:VirtualizedContainerService.HintSize="652,577.6" sap2010:WorkflowViewState.IdRef="Sequence_36">
                                                                                                                                                 <Sequence.Variables>
                                                                                                                                                   <Variable x:TypeArguments="x:Int32" Default="0" Name="numbering" />
                                                                                                                                                   <Variable x:TypeArguments="x:Double" Name="temp_retrive_items" />
@@ -852,16 +853,23 @@
                                                                                                                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                                                                                   </scg:Dictionary>
                                                                                                                                                 </sap:WorkflowViewStateService.ViewState>
-                                                                                                                                                <If Condition="[excluded_list.Contains(i)]" sap:VirtualizedContainerService.HintSize="568.8,209.6" sap2010:WorkflowViewState.IdRef="If_2">
+                                                                                                                                                <If Condition="[excluded_list.Contains(i)]" sap:VirtualizedContainerService.HintSize="610.4,322.4" sap2010:WorkflowViewState.IdRef="If_2">
                                                                                                                                                   <If.Then>
-                                                                                                                                                    <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_9">
-                                                                                                                                                      <Assign.To>
-                                                                                                                                                        <OutArgument x:TypeArguments="x:Double">[temp_retrive_items]</OutArgument>
-                                                                                                                                                      </Assign.To>
-                                                                                                                                                      <Assign.Value>
-                                                                                                                                                        <InArgument x:TypeArguments="x:Double">[CDbl(input_array(i))]</InArgument>
-                                                                                                                                                      </Assign.Value>
-                                                                                                                                                    </Assign>
+                                                                                                                                                    <Sequence sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                                                                                                                                                      <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                                                        </scg:Dictionary>
+                                                                                                                                                      </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                      <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                                                                                                                                        <Assign.To>
+                                                                                                                                                          <OutArgument x:TypeArguments="x:Double">[temp_retrive_items]</OutArgument>
+                                                                                                                                                        </Assign.To>
+                                                                                                                                                        <Assign.Value>
+                                                                                                                                                          <InArgument x:TypeArguments="x:Double">[CDbl(input_array(i))]</InArgument>
+                                                                                                                                                        </Assign.Value>
+                                                                                                                                                      </Assign>
+                                                                                                                                                    </Sequence>
                                                                                                                                                   </If.Then>
                                                                                                                                                   <If.Else>
                                                                                                                                                     <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_8">
@@ -874,7 +882,7 @@
                                                                                                                                                     </Assign>
                                                                                                                                                   </If.Else>
                                                                                                                                                 </If>
-                                                                                                                                                <Assign sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                                                                                                                                <Assign sap:VirtualizedContainerService.HintSize="610.4,60" sap2010:WorkflowViewState.IdRef="Assign_6">
                                                                                                                                                   <Assign.To>
                                                                                                                                                     <OutArgument x:TypeArguments="x:Double">[temp_retrive_items]</OutArgument>
                                                                                                                                                   </Assign.To>
