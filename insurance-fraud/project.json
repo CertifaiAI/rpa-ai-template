@@ -1,0 +1,40 @@
+{
+  "name": "Insurance_Fraud_Detection",
+  "description": "Process Workflow For Integrating Konduit Pipeline Serving in Fraud Detection",
+  "main": "Main.xaml",
+  "dependencies": {
+    "Microsoft.Activities.Extensions": "[2.0.6.9]",
+    "Newtonsoft.Json": "[11.0.2]",
+    "System.Net.Http": "[4.1.0]",
+    "UiPath.Excel.Activities": "[2.7.1-ce]",
+    "UiPath.Mail.Activities": "[1.7.1-ce]",
+    "UiPath.System.Activities": "[19.10.0-ce]",
+    "UiPath.UIAutomation.Activities": "[19.10.0-ce]",
+    "UiPath.WebAPI.Activities": "[1.4.4]"
+  },
+  "webServices": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "19.10.0.395",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "fileInfos": []
+  },
+  "expressionLanguage": "VisualBasic"
+}

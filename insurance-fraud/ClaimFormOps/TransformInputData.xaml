@@ -1,0 +1,1134 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Transformation" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="input_array" Type="InArgument(s:String[])" />
+    <x:Property Name="return_inference_string" Type="OutArgument(x:String)" />
+    <x:Property Name="mapping_arr" Type="InArgument(s:String[])" />
+    <x:Property Name="file_path_loc" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1044.8,1456.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Transformation_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="Transformation" sap:VirtualizedContainerService.HintSize="1024.8,1396.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="policy_state" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="policy_csl" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="police_report_available" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="property_damage" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="insured_sex" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="collision_type" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="incident_type" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="incident_severity" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="authorities_contacted" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="insured_education_level" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="insured_occupation" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="insured_hobbies" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="insured_relationship" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="incident_state" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="incident_city" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="auto_make" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="months_as_customer" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="age" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="policy_deductable" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="policy_annual_premium" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="umbrella_limit" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="capital_gains" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="capital_loss" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="incident_hour_of_the_day" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="number_of_vehicles_involved" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="bodily_injuries" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="witnesses" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="total_claim_amount" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="injury_claim" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="property_claim" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="vehicle_claim" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Default="[New Dictionary(Of String, Double)]" Name="auto_year" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)[]" Name="array_of_dic" />
+      <Variable x:TypeArguments="scg:List(x:Double)" Default="[New List(Of Double)]" Name="array_of_tranform_data" />
+      <Variable x:TypeArguments="scg:List(x:Int32)" Default="[new List(Of Integer)(New Integer(){ 0,1,4,5,6, 12, 13, 20, 21, 23, 24, 26, 27, 28 ,29, 31})]" Name="excluded_list" />
+    </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <av:Point x:Key="ShapeLocation">420,2.4</av:Point>
+        <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">450,77.6 450,107.6 100,107.6 100,125.6</av:PointCollection>
+        <x:Double x:Key="Height">1360</x:Double>
+        <x:Double x:Key="Width">990.80000000000018</x:Double>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID35</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID35">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">0,125.6</av:Point>
+          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">100,194.84 100,225.6</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="policy_state" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="variable1" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_2" Key="OH" Value="2" />
+        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_3" Key="IN" Value="1" />
+        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_4" Key="IL" Value="0" />
+        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_108" Key="min" Value="0" />
+        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_109" Key="max" Value="2" />
+      </Sequence>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID0">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">0,225.6</av:Point>
+              <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">100,294.4 100,315.6</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="policy_csl" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_csl]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_5" Key="250/500" Value="1" />
+            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_csl]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_6" Key="100/300" Value="0" />
+            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_csl]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_7" Key="500/1000" Value="2" />
+            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_csl]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_110" Key="min" Value="0" />
+            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_csl]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_111" Key="max" Value="2" />
+          </Sequence>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">0,315.6</av:Point>
+                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">100,384.4 100,405.6</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="police_report_available" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[police_report_available]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_8" Key="YES" Value="2" />
+                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[police_report_available]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_9" Key="?" Value="0" />
+                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[police_report_available]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_10" Key="NO" Value="1" />
+                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[police_report_available]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_112" Key="min" Value="0" />
+                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[police_report_available]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_113" Key="max" Value="2" />
+              </Sequence>
+              <FlowStep.Next>
+                <FlowStep x:Name="__ReferenceID2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">0,405.6</av:Point>
+                      <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">100,474.4 100,495.6</av:PointCollection>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="property_damage" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[property_damage]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_11" Key="YES" Value="2" />
+                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[property_damage]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_12" Key="?" Value="0" />
+                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[property_damage]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_13" Key="NO" Value="1" />
+                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[property_damage]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_114" Key="min" Value="0" />
+                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[property_damage]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_115" Key="max" Value="2" />
+                  </Sequence>
+                  <FlowStep.Next>
+                    <FlowStep x:Name="__ReferenceID3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">0,495.6</av:Point>
+                          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">100,564.4 100,585.6</av:PointCollection>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence DisplayName="insured_sex" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_sex]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_14" Key="MALE" Value="1" />
+                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_sex]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_15" Key="FEMALE" Value="0" />
+                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_sex]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_116" Key="min" Value="0" />
+                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_sex]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_117" Key="max" Value="1" />
+                      </Sequence>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID4">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">0,585.6</av:Point>
+                              <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">100,654.4 100,685.6</av:PointCollection>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence DisplayName="collision_type" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[collision_type]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_16" Key="Side Collision" Value="3" />
+                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[collision_type]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_17" Key="?" Value="0" />
+                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[collision_type]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_18" Key="Rear Collision" Value="2" />
+                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[collision_type]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_19" Key="Front Collision" Value="1" />
+                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[collision_type]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_118" Key="min" Value="0" />
+                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[collision_type]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_119" Key="max" Value="3" />
+                          </Sequence>
+                          <FlowStep.Next>
+                            <FlowStep x:Name="__ReferenceID5">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <av:Point x:Key="ShapeLocation">0,685.6</av:Point>
+                                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">100,754.4 100,785.6</av:PointCollection>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Sequence DisplayName="incident_type" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_type]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_20" Key="Single Vehicle Collision" Value="2" />
+                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_type]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_21" Key="Vehicle Theft" Value="3" />
+                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_type]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_22" Key="Multi-vehicle Collision" Value="0" />
+                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_type]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_23" Key="Parked Car" Value="1" />
+                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_type]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_120" Key="min" Value="0" />
+                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_type]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_121" Key="max" Value="3" />
+                              </Sequence>
+                              <FlowStep.Next>
+                                <FlowStep x:Name="__ReferenceID6">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:Point x:Key="ShapeLocation">0,785.6</av:Point>
+                                      <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                      <av:PointCollection x:Key="ConnectorLocation">200,820 230,820 230,95.6 340,95.6 340,125.6</av:PointCollection>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Sequence DisplayName="incident_severity" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="x:String" Name="variable1" />
+                                    </Sequence.Variables>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_severity]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_24" Key="Major Damage" Value="0" />
+                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_severity]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_25" Key="Minor Damage" Value="1" />
+                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_severity]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_26" Key="Total Loss" Value="2" />
+                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_severity]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_27" Key="Trivial Damage" Value="3" />
+                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_severity]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_122" Key="min" Value="0" />
+                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_severity]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_123" Key="max" Value="3" />
+                                  </Sequence>
+                                  <FlowStep.Next>
+                                    <FlowStep x:Name="__ReferenceID7">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <av:Point x:Key="ShapeLocation">240,125.6</av:Point>
+                                          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                          <av:PointCollection x:Key="ConnectorLocation">340,194.4 340,215.6</av:PointCollection>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Sequence DisplayName="authorities_contacted" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[authorities_contacted]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_28" Key="Police" Value="4" />
+                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[authorities_contacted]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_29" Key="None" Value="2" />
+                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[authorities_contacted]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_30" Key="Fire" Value="1" />
+                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[authorities_contacted]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_31" Key="Other" Value="3" />
+                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[authorities_contacted]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_32" Key="Ambulance" Value="0" />
+                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[authorities_contacted]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_124" Key="min" Value="0" />
+                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[authorities_contacted]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_125" Key="max" Value="4" />
+                                      </Sequence>
+                                      <FlowStep.Next>
+                                        <FlowStep x:Name="__ReferenceID8">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <av:Point x:Key="ShapeLocation">240,215.6</av:Point>
+                                              <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                              <av:PointCollection x:Key="ConnectorLocation">340,284.4 340,325.6</av:PointCollection>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Sequence DisplayName="insured_education_level" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_education_level]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_33" Key="MD" Value="4" />
+                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_education_level]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_34" Key="PhD" Value="6" />
+                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_education_level]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_35" Key="Associate" Value="0" />
+                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_education_level]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_36" Key="Masters" Value="5" />
+                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_education_level]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_37" Key="High School" Value="2" />
+                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_education_level]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_38" Key="College" Value="1" />
+                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_education_level]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_39" Key="JD" Value="3" />
+                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_education_level]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_126" Key="min" Value="0" />
+                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_education_level]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_127" Key="max" Value="6" />
+                                          </Sequence>
+                                          <FlowStep.Next>
+                                            <FlowStep x:Name="__ReferenceID9">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <av:Point x:Key="ShapeLocation">240,325.6</av:Point>
+                                                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                  <av:PointCollection x:Key="ConnectorLocation">340,394.4 340,415.6</av:PointCollection>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <Sequence DisplayName="insured_occupation" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_40" Key="craft-repair" Value="2" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_41" Key="machine-op-inspct" Value="6" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_42" Key="sales" Value="11" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_43" Key="armed-forces" Value="1" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_44" Key="tech-support" Value="12" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_45" Key="prof-specialty" Value="9" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_46" Key="other-service" Value="7" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_47" Key="priv-house-serv" Value="8" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_48" Key="exec-managerial" Value="3" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_49" Key="protective-serv" Value="10" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_50" Key="transport-moving" Value="13" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_51" Key="handlers-cleaners" Value="5" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_52" Key="adm-clerical" Value="0" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_53" Key="farming-fishing" Value="4" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_128" Key="min" Value="0" />
+                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_occupation]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_129" Key="max" Value="13" />
+                                              </Sequence>
+                                              <FlowStep.Next>
+                                                <FlowStep x:Name="__ReferenceID10">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <av:Point x:Key="ShapeLocation">240,415.6</av:Point>
+                                                      <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                      <av:PointCollection x:Key="ConnectorLocation">340,484.4 340,515.6</av:PointCollection>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <Sequence DisplayName="insured_hobbies" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_54" Key="sleeping" Value="17" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_55" Key="reading" Value="15" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_56" Key="board-games" Value="2" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_57" Key="bungie-jumping" Value="3" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_58" Key="base-jumping" Value="0" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_59" Key="golf" Value="9" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_60" Key="camping" Value="4" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_61" Key="dancing" Value="7" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_62" Key="skydiving" Value="16" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_63" Key="movies" Value="12" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_64" Key="hiking" Value="10" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_65" Key="yachting" Value="19" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_66" Key="paintball" Value="13" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_67" Key="chess" Value="5" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_68" Key="kayaking" Value="11" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_69" Key="polo" Value="14" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_70" Key="basketball" Value="1" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_71" Key="video-games" Value="18" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_72" Key="cross-fit" Value="6" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_73" Key="exercise" Value="8" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_130" Key="min" Value="0" />
+                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_hobbies]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_131" Key="max" Value="19" />
+                                                  </Sequence>
+                                                  <FlowStep.Next>
+                                                    <FlowStep x:Name="__ReferenceID11">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <av:Point x:Key="ShapeLocation">240,515.6</av:Point>
+                                                          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                          <av:PointCollection x:Key="ConnectorLocation">340,584.4 340,605.6</av:PointCollection>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <Sequence DisplayName="insured_relationship" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_relationship]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_74" Key="husband" Value="0" />
+                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_relationship]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_75" Key="other-relative" Value="2" />
+                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_relationship]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_76" Key="own-child" Value="3" />
+                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_relationship]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_77" Key="unmarried" Value="4" />
+                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_relationship]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_78" Key="wife" Value="5" />
+                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_relationship]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_79" Key="not-in-family" Value="1" />
+                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_relationship]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_132" Key="min" Value="0" />
+                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[insured_relationship]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_133" Key="max" Value="5" />
+                                                      </Sequence>
+                                                      <FlowStep.Next>
+                                                        <FlowStep x:Name="__ReferenceID12">
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <av:Point x:Key="ShapeLocation">240,605.6</av:Point>
+                                                              <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                              <av:PointCollection x:Key="ConnectorLocation">340,674.4 340,695.6</av:PointCollection>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                          <Sequence DisplayName="incident_state" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_80" Key="SC" Value="4" />
+                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_81" Key="VA" Value="5" />
+                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_82" Key="NY" Value="1" />
+                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_83" Key="OH" Value="2" />
+                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_84" Key="WV" Value="6" />
+                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_85" Key="NC" Value="0" />
+                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_86" Key="PA" Value="3" />
+                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_134" Key="min" Value="0" />
+                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_state]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_135" Key="max" Value="6" />
+                                                          </Sequence>
+                                                          <FlowStep.Next>
+                                                            <FlowStep x:Name="__ReferenceID13">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <av:Point x:Key="ShapeLocation">240,695.6</av:Point>
+                                                                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                  <av:PointCollection x:Key="ConnectorLocation">340,764.4 340,785.6</av:PointCollection>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                              <Sequence DisplayName="incident_city" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                  </scg:Dictionary>
+                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_city]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_87" Key="Columbus" Value="1" />
+                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_city]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_88" Key="Riverwood" Value="5" />
+                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_city]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_89" Key="Arlington" Value="0" />
+                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_city]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_90" Key="Springfield" Value="6" />
+                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_city]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_91" Key="Hillsdale" Value="2" />
+                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_city]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_92" Key="Northbend" Value="3" />
+                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_city]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_93" Key="Northbrook" Value="4" />
+                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_city]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_136" Key="min" Value="0" />
+                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_city]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_137" Key="max" Value="6" />
+                                                              </Sequence>
+                                                              <FlowStep.Next>
+                                                                <FlowStep x:Name="__ReferenceID14">
+                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                      <av:Point x:Key="ShapeLocation">240,785.6</av:Point>
+                                                                      <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                      <av:PointCollection x:Key="ConnectorLocation">440,820 470,820 470,755.6 440,755.6 440,95.6 560,95.6 560,125.6</av:PointCollection>
+                                                                    </scg:Dictionary>
+                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                  <Sequence DisplayName="auto_make" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                      </scg:Dictionary>
+                                                                    </sap:WorkflowViewStateService.ViewState>
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_94" Key="Saab" Value="10" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_95" Key="Mercedes" Value="8" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_96" Key="Dodge" Value="4" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_97" Key="Chevrolet" Value="3" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_98" Key="Accura" Value="0" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_99" Key="Nissan" Value="9" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_100" Key="Audi" Value="1" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_101" Key="Toyota" Value="12" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_102" Key="Ford" Value="5" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_103" Key="Suburu" Value="11" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_104" Key="BMW" Value="2" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_105" Key="Jeep" Value="7" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_106" Key="Honda" Value="6" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_107" Key="Volkswagen" Value="13" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_138" Key="min" Value="0" />
+                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_make]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_139" Key="max" Value="13" />
+                                                                  </Sequence>
+                                                                  <FlowStep.Next>
+                                                                    <FlowStep x:Name="__ReferenceID15">
+                                                                      <sap:WorkflowViewStateService.ViewState>
+                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                          <av:Point x:Key="ShapeLocation">460,125.6</av:Point>
+                                                                          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                          <av:PointCollection x:Key="ConnectorLocation">560,194.4 560,215.6</av:PointCollection>
+                                                                        </scg:Dictionary>
+                                                                      </sap:WorkflowViewStateService.ViewState>
+                                                                      <Sequence DisplayName="months_as_customer" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                                                        <sap:WorkflowViewStateService.ViewState>
+                                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                          </scg:Dictionary>
+                                                                        </sap:WorkflowViewStateService.ViewState>
+                                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[months_as_customer]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_140" Key="min" Value="0" />
+                                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[months_as_customer]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_141" Key="max" Value="479" />
+                                                                      </Sequence>
+                                                                      <FlowStep.Next>
+                                                                        <FlowStep x:Name="__ReferenceID16">
+                                                                          <sap:WorkflowViewStateService.ViewState>
+                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                              <av:Point x:Key="ShapeLocation">460,215.6</av:Point>
+                                                                              <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                              <av:PointCollection x:Key="ConnectorLocation">560,284.4 560,325.6</av:PointCollection>
+                                                                            </scg:Dictionary>
+                                                                          </sap:WorkflowViewStateService.ViewState>
+                                                                          <Sequence DisplayName="age" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                                                            <sap:WorkflowViewStateService.ViewState>
+                                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                              </scg:Dictionary>
+                                                                            </sap:WorkflowViewStateService.ViewState>
+                                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[age]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_142" Key="min" Value="19" />
+                                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[age]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_143" Key="max" Value="45" />
+                                                                          </Sequence>
+                                                                          <FlowStep.Next>
+                                                                            <FlowStep x:Name="__ReferenceID17">
+                                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                  <av:Point x:Key="ShapeLocation">460,325.6</av:Point>
+                                                                                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                  <av:PointCollection x:Key="ConnectorLocation">560,394.4 560,415.6</av:PointCollection>
+                                                                                </scg:Dictionary>
+                                                                              </sap:WorkflowViewStateService.ViewState>
+                                                                              <Sequence DisplayName="policy_deductable" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                  </scg:Dictionary>
+                                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_deductable]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_144" Key="min" Value="500" />
+                                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_deductable]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_145" Key="max" Value="1500" />
+                                                                              </Sequence>
+                                                                              <FlowStep.Next>
+                                                                                <FlowStep x:Name="__ReferenceID18">
+                                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                      <av:Point x:Key="ShapeLocation">460,415.6</av:Point>
+                                                                                      <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                      <av:PointCollection x:Key="ConnectorLocation">560,484.4 560,515.6</av:PointCollection>
+                                                                                    </scg:Dictionary>
+                                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                                  <Sequence DisplayName="policy_annual_premium" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                      </scg:Dictionary>
+                                                                                    </sap:WorkflowViewStateService.ViewState>
+                                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_annual_premium]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_146" Key="min" Value="433.33" />
+                                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[policy_annual_premium]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_147" Key="max" Value="1614.26" />
+                                                                                  </Sequence>
+                                                                                  <FlowStep.Next>
+                                                                                    <FlowStep x:Name="__ReferenceID19">
+                                                                                      <sap:WorkflowViewStateService.ViewState>
+                                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                          <av:Point x:Key="ShapeLocation">460,515.6</av:Point>
+                                                                                          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                          <av:PointCollection x:Key="ConnectorLocation">560,584.4 560,605.6</av:PointCollection>
+                                                                                        </scg:Dictionary>
+                                                                                      </sap:WorkflowViewStateService.ViewState>
+                                                                                      <Sequence DisplayName="umbrella_limit" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                                                                        <sap:WorkflowViewStateService.ViewState>
+                                                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                          </scg:Dictionary>
+                                                                                        </sap:WorkflowViewStateService.ViewState>
+                                                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[umbrella_limit]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_148" Key="min" Value="-1000000" />
+                                                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[umbrella_limit]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_149" Key="max" Value="11000000" />
+                                                                                      </Sequence>
+                                                                                      <FlowStep.Next>
+                                                                                        <FlowStep x:Name="__ReferenceID20">
+                                                                                          <sap:WorkflowViewStateService.ViewState>
+                                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                              <av:Point x:Key="ShapeLocation">460,605.6</av:Point>
+                                                                                              <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                              <av:PointCollection x:Key="ConnectorLocation">560,674.4 560,695.6</av:PointCollection>
+                                                                                            </scg:Dictionary>
+                                                                                          </sap:WorkflowViewStateService.ViewState>
+                                                                                          <Sequence DisplayName="capital-gains" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                                                                            <sap:WorkflowViewStateService.ViewState>
+                                                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                              </scg:Dictionary>
+                                                                                            </sap:WorkflowViewStateService.ViewState>
+                                                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[capital_gains]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_150" Key="min" Value="0" />
+                                                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[capital_gains]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_151" Key="max" Value="100500" />
+                                                                                          </Sequence>
+                                                                                          <FlowStep.Next>
+                                                                                            <FlowStep x:Name="__ReferenceID21">
+                                                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                  <av:Point x:Key="ShapeLocation">460,695.6</av:Point>
+                                                                                                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                                  <av:PointCollection x:Key="ConnectorLocation">560,764.4 560,785.6</av:PointCollection>
+                                                                                                </scg:Dictionary>
+                                                                                              </sap:WorkflowViewStateService.ViewState>
+                                                                                              <Sequence DisplayName="capital-loss" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                  </scg:Dictionary>
+                                                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[capital_loss]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_152" Key="min" Value="-111100" />
+                                                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[capital_loss]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_153" Key="max" Value="111100" />
+                                                                                              </Sequence>
+                                                                                              <FlowStep.Next>
+                                                                                                <FlowStep x:Name="__ReferenceID22">
+                                                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                      <av:Point x:Key="ShapeLocation">460,785.6</av:Point>
+                                                                                                      <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                                      <av:PointCollection x:Key="ConnectorLocation">660,820 690,820 690,755.6 660,755.6 660,95.6 780,95.6 780,125.6</av:PointCollection>
+                                                                                                    </scg:Dictionary>
+                                                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                                                  <Sequence DisplayName="incident_hour_of_the_day" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                      </scg:Dictionary>
+                                                                                                    </sap:WorkflowViewStateService.ViewState>
+                                                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_hour_of_the_day]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_154" Key="min" Value="0" />
+                                                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[incident_hour_of_the_day]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_155" Key="max" Value="23" />
+                                                                                                  </Sequence>
+                                                                                                  <FlowStep.Next>
+                                                                                                    <FlowStep x:Name="__ReferenceID23">
+                                                                                                      <sap:WorkflowViewStateService.ViewState>
+                                                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                          <av:Point x:Key="ShapeLocation">680,125.6</av:Point>
+                                                                                                          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                                          <av:PointCollection x:Key="ConnectorLocation">780,194.4 780,215.6</av:PointCollection>
+                                                                                                        </scg:Dictionary>
+                                                                                                      </sap:WorkflowViewStateService.ViewState>
+                                                                                                      <Sequence DisplayName="number_of_vehicles_involved" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                                                                                        <sap:WorkflowViewStateService.ViewState>
+                                                                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                          </scg:Dictionary>
+                                                                                                        </sap:WorkflowViewStateService.ViewState>
+                                                                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[number_of_vehicles_involved]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_156" Key="min" Value="1" />
+                                                                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[number_of_vehicles_involved]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_157" Key="max" Value="3" />
+                                                                                                      </Sequence>
+                                                                                                      <FlowStep.Next>
+                                                                                                        <FlowStep x:Name="__ReferenceID24">
+                                                                                                          <sap:WorkflowViewStateService.ViewState>
+                                                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                              <av:Point x:Key="ShapeLocation">680,215.6</av:Point>
+                                                                                                              <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                                              <av:PointCollection x:Key="ConnectorLocation">780,284.4 780,305.6</av:PointCollection>
+                                                                                                            </scg:Dictionary>
+                                                                                                          </sap:WorkflowViewStateService.ViewState>
+                                                                                                          <Sequence DisplayName="bodily_injuries" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                                                                                            <sap:WorkflowViewStateService.ViewState>
+                                                                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                              </scg:Dictionary>
+                                                                                                            </sap:WorkflowViewStateService.ViewState>
+                                                                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[bodily_injuries]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_158" Key="min" Value="0" />
+                                                                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[bodily_injuries]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_159" Key="max" Value="2" />
+                                                                                                          </Sequence>
+                                                                                                          <FlowStep.Next>
+                                                                                                            <FlowStep x:Name="__ReferenceID25">
+                                                                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                  <av:Point x:Key="ShapeLocation">680,305.6</av:Point>
+                                                                                                                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                                                  <av:PointCollection x:Key="ConnectorLocation">780,374.4 780,395.6</av:PointCollection>
+                                                                                                                </scg:Dictionary>
+                                                                                                              </sap:WorkflowViewStateService.ViewState>
+                                                                                                              <Sequence DisplayName="witnesses" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                                                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                  </scg:Dictionary>
+                                                                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[witnesses]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_160" Key="min" Value="0" />
+                                                                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[witnesses]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_161" Key="max" Value="3" />
+                                                                                                              </Sequence>
+                                                                                                              <FlowStep.Next>
+                                                                                                                <FlowStep x:Name="__ReferenceID26">
+                                                                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                      <av:Point x:Key="ShapeLocation">680,395.6</av:Point>
+                                                                                                                      <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                                                      <av:PointCollection x:Key="ConnectorLocation">780,464.4 780,485.6</av:PointCollection>
+                                                                                                                    </scg:Dictionary>
+                                                                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                                                                  <Sequence DisplayName="total_claim_amount" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                                                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                      </scg:Dictionary>
+                                                                                                                    </sap:WorkflowViewStateService.ViewState>
+                                                                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[total_claim_amount]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_162" Key="min" Value="100" />
+                                                                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[total_claim_amount]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_163" Key="max" Value="114820" />
+                                                                                                                  </Sequence>
+                                                                                                                  <FlowStep.Next>
+                                                                                                                    <FlowStep x:Name="__ReferenceID27">
+                                                                                                                      <sap:WorkflowViewStateService.ViewState>
+                                                                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                          <av:Point x:Key="ShapeLocation">680,485.6</av:Point>
+                                                                                                                          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                                                          <av:PointCollection x:Key="ConnectorLocation">780,554.4 780,575.6</av:PointCollection>
+                                                                                                                        </scg:Dictionary>
+                                                                                                                      </sap:WorkflowViewStateService.ViewState>
+                                                                                                                      <Sequence DisplayName="injury_claim" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                                                                                                        <sap:WorkflowViewStateService.ViewState>
+                                                                                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                          </scg:Dictionary>
+                                                                                                                        </sap:WorkflowViewStateService.ViewState>
+                                                                                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[injury_claim]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_164" Key="min" Value="0" />
+                                                                                                                        <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[injury_claim]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_165" Key="max" Value="21450" />
+                                                                                                                      </Sequence>
+                                                                                                                      <FlowStep.Next>
+                                                                                                                        <FlowStep x:Name="__ReferenceID28">
+                                                                                                                          <sap:WorkflowViewStateService.ViewState>
+                                                                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                              <av:Point x:Key="ShapeLocation">680,575.6</av:Point>
+                                                                                                                              <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                                                              <av:PointCollection x:Key="ConnectorLocation">780,644.4 780,675.6</av:PointCollection>
+                                                                                                                            </scg:Dictionary>
+                                                                                                                          </sap:WorkflowViewStateService.ViewState>
+                                                                                                                          <Sequence DisplayName="property_claim" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                                                                                                            <sap:WorkflowViewStateService.ViewState>
+                                                                                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                              </scg:Dictionary>
+                                                                                                                            </sap:WorkflowViewStateService.ViewState>
+                                                                                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[property_claim]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_166" Key="min" Value="0" />
+                                                                                                                            <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[property_claim]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_167" Key="max" Value="23670" />
+                                                                                                                          </Sequence>
+                                                                                                                          <FlowStep.Next>
+                                                                                                                            <FlowStep x:Name="__ReferenceID29">
+                                                                                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                  <av:Point x:Key="ShapeLocation">680,675.6</av:Point>
+                                                                                                                                  <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                                                                  <av:PointCollection x:Key="ConnectorLocation">780,744.4 780,785.6</av:PointCollection>
+                                                                                                                                </scg:Dictionary>
+                                                                                                                              </sap:WorkflowViewStateService.ViewState>
+                                                                                                                              <Sequence DisplayName="vehicle_claim" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                                                                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                                  </scg:Dictionary>
+                                                                                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[vehicle_claim]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_168" Key="min" Value="70" />
+                                                                                                                                <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[vehicle_claim]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_169" Key="max" Value="79490" />
+                                                                                                                              </Sequence>
+                                                                                                                              <FlowStep.Next>
+                                                                                                                                <FlowStep x:Name="__ReferenceID30">
+                                                                                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                      <av:Point x:Key="ShapeLocation">680,785.6</av:Point>
+                                                                                                                                      <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+                                                                                                                                      <av:PointCollection x:Key="ConnectorLocation">780,854.4 780,884.4 100,884.4 100,913.6</av:PointCollection>
+                                                                                                                                    </scg:Dictionary>
+                                                                                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                  <Sequence DisplayName="auto_year" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                                                                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                                      </scg:Dictionary>
+                                                                                                                                    </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_year]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_170" Key="min" Value="1995" />
+                                                                                                                                    <maes:AddToDictionary x:TypeArguments="x:String, x:Double" Dictionary="[auto_year]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_171" Key="max" Value="2015" />
+                                                                                                                                  </Sequence>
+                                                                                                                                  <FlowStep.Next>
+                                                                                                                                    <FlowStep x:Name="__ReferenceID31">
+                                                                                                                                      <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                          <av:Point x:Key="ShapeLocation">0,913.6</av:Point>
+                                                                                                                                          <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+                                                                                                                                          <av:PointCollection x:Key="ConnectorLocation">100,966.4 100,996.4 210,996.4 210,940 240,940</av:PointCollection>
+                                                                                                                                        </scg:Dictionary>
+                                                                                                                                      </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                      <While DisplayName="Input data pre-processing" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="While_2">
+                                                                                                                                        <While.Variables>
+                                                                                                                                          <Variable x:TypeArguments="x:Int32" Default="0" Name="i" />
+                                                                                                                                        </While.Variables>
+                                                                                                                                        <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                                          </scg:Dictionary>
+                                                                                                                                        </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                        <While.Condition>[i &lt; input_array.Length()]</While.Condition>
+                                                                                                                                        <Sequence sap:VirtualizedContainerService.HintSize="1071.2,1120" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                                                                                                                          <Sequence.Variables>
+                                                                                                                                            <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Name="temp_dic" />
+                                                                                                                                          </Sequence.Variables>
+                                                                                                                                          <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                                            </scg:Dictionary>
+                                                                                                                                          </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                          <Assign sap:VirtualizedContainerService.HintSize="1029.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                                                                                                                            <Assign.To>
+                                                                                                                                              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)[]">[array_of_dic]</OutArgument>
+                                                                                                                                            </Assign.To>
+                                                                                                                                            <Assign.Value>
+                                                                                                                                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)[]">[{months_as_customer, age, policy_state, policy_csl, policy_deductable, policy_annual_premium, umbrella_limit, insured_sex, insured_education_level, insured_occupation, insured_hobbies, insured_relationship, capital_gains, capital_loss, incident_type, collision_type, incident_severity, authorities_contacted, incident_state, incident_city, incident_hour_of_the_day, number_of_vehicles_involved, property_damage, bodily_injuries, witnesses, police_report_available, total_claim_amount, injury_claim, property_claim, vehicle_claim, auto_make, auto_year}]</InArgument>
+                                                                                                                                            </Assign.Value>
+                                                                                                                                          </Assign>
+                                                                                                                                          <Assign sap:VirtualizedContainerService.HintSize="1029.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                                                                                                                            <Assign.To>
+                                                                                                                                              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)">[temp_dic]</OutArgument>
+                                                                                                                                            </Assign.To>
+                                                                                                                                            <Assign.Value>
+                                                                                                                                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)">[array_of_dic(i)]</InArgument>
+                                                                                                                                            </Assign.Value>
+                                                                                                                                          </Assign>
+                                                                                                                                          <If Condition="[temp_dic.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="1029.6,727.2" sap2010:WorkflowViewState.IdRef="If_1">
+                                                                                                                                            <If.Then>
+                                                                                                                                              <Sequence DisplayName="get_item_from_dic" sap:VirtualizedContainerService.HintSize="652,577.6" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                                                                                                                                <Sequence.Variables>
+                                                                                                                                                  <Variable x:TypeArguments="x:Int32" Default="0" Name="numbering" />
+                                                                                                                                                  <Variable x:TypeArguments="x:Double" Name="temp_retrive_items" />
+                                                                                                                                                </Sequence.Variables>
+                                                                                                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                                                  </scg:Dictionary>
+                                                                                                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                <If Condition="[excluded_list.Contains(i)]" sap:VirtualizedContainerService.HintSize="610.4,322.4" sap2010:WorkflowViewState.IdRef="If_2">
+                                                                                                                                                  <If.Then>
+                                                                                                                                                    <Sequence sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                                                                                                                                                      <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                                                        </scg:Dictionary>
+                                                                                                                                                      </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                      <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                                                                                                                                        <Assign.To>
+                                                                                                                                                          <OutArgument x:TypeArguments="x:Double">[temp_retrive_items]</OutArgument>
+                                                                                                                                                        </Assign.To>
+                                                                                                                                                        <Assign.Value>
+                                                                                                                                                          <InArgument x:TypeArguments="x:Double">[CDbl(input_array(i))]</InArgument>
+                                                                                                                                                        </Assign.Value>
+                                                                                                                                                      </Assign>
+                                                                                                                                                    </Sequence>
+                                                                                                                                                  </If.Then>
+                                                                                                                                                  <If.Else>
+                                                                                                                                                    <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                                                                                                                                      <Assign.To>
+                                                                                                                                                        <OutArgument x:TypeArguments="x:Double">[temp_retrive_items]</OutArgument>
+                                                                                                                                                      </Assign.To>
+                                                                                                                                                      <Assign.Value>
+                                                                                                                                                        <InArgument x:TypeArguments="x:Double">[temp_dic.Item(input_array(i))]</InArgument>
+                                                                                                                                                      </Assign.Value>
+                                                                                                                                                    </Assign>
+                                                                                                                                                  </If.Else>
+                                                                                                                                                </If>
+                                                                                                                                                <Assign sap:VirtualizedContainerService.HintSize="610.4,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                                                                                                                                  <Assign.To>
+                                                                                                                                                    <OutArgument x:TypeArguments="x:Double">[temp_retrive_items]</OutArgument>
+                                                                                                                                                  </Assign.To>
+                                                                                                                                                  <Assign.Value>
+                                                                                                                                                    <InArgument x:TypeArguments="x:Double">[(temp_retrive_items - temp_dic.Item("min") ) / temp_dic.Item("max")]</InArgument>
+                                                                                                                                                  </Assign.Value>
+                                                                                                                                                </Assign>
+                                                                                                                                                <AddToCollection x:TypeArguments="x:Double" Collection="[array_of_tranform_data]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="568.8,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_3" Item="[temp_retrive_items]" />
+                                                                                                                                              </Sequence>
+                                                                                                                                            </If.Then>
+                                                                                                                                            <If.Else>
+                                                                                                                                              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;dictionary &quot;+i.ToString()+&quot; is an empty dictionary&quot;]" TopMost="True" />
+                                                                                                                                            </If.Else>
+                                                                                                                                          </If>
+                                                                                                                                          <Assign sap:VirtualizedContainerService.HintSize="988,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                                                                                                                            <Assign.To>
+                                                                                                                                              <OutArgument x:TypeArguments="x:Int32">[i]</OutArgument>
+                                                                                                                                            </Assign.To>
+                                                                                                                                            <Assign.Value>
+                                                                                                                                              <InArgument x:TypeArguments="x:Int32">[i + 1]</InArgument>
+                                                                                                                                            </Assign.Value>
+                                                                                                                                          </Assign>
+                                                                                                                                        </Sequence>
+                                                                                                                                      </While>
+                                                                                                                                      <FlowStep.Next>
+                                                                                                                                        <FlowStep x:Name="__ReferenceID34">
+                                                                                                                                          <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                              <av:Point x:Key="ShapeLocation">240,913.6</av:Point>
+                                                                                                                                              <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+                                                                                                                                              <av:PointCollection x:Key="ConnectorLocation">340,966.4 340,996.4 450,996.4 450,940 480,940</av:PointCollection>
+                                                                                                                                            </scg:Dictionary>
+                                                                                                                                          </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Printing inspection file name" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[&quot;Current Inspection File : &quot; + file_path_loc + Environment.NewLine]">
+                                                                                                                                            <ui:TypeInto.Target>
+                                                                                                                                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="93a84a3125851fe1d5d126ab1e735a91" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='*Untitled - Notepad*' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
+                                                                                                                                                <ui:Target.TimeoutMS>
+                                                                                                                                                  <InArgument x:TypeArguments="x:Int32" />
+                                                                                                                                                </ui:Target.TimeoutMS>
+                                                                                                                                                <ui:Target.WaitForReady>
+                                                                                                                                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                                                                                                                </ui:Target.WaitForReady>
+                                                                                                                                              </ui:Target>
+                                                                                                                                            </ui:TypeInto.Target>
+                                                                                                                                            <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                                              </scg:Dictionary>
+                                                                                                                                            </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                          </ui:TypeInto>
+                                                                                                                                          <FlowStep.Next>
+                                                                                                                                            <FlowStep x:Name="__ReferenceID32">
+                                                                                                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                                  <av:Point x:Key="ShapeLocation">480,913.6</av:Point>
+                                                                                                                                                  <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+                                                                                                                                                  <av:PointCollection x:Key="ConnectorLocation">580,966.4 580,996.4 690,996.4 690,940 720,940</av:PointCollection>
+                                                                                                                                                </scg:Dictionary>
+                                                                                                                                              </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                              <While DisplayName="Printing array double" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="While_4">
+                                                                                                                                                <While.Variables>
+                                                                                                                                                  <Variable x:TypeArguments="x:Int32" Default="0" Name="i" />
+                                                                                                                                                </While.Variables>
+                                                                                                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                                                  </scg:Dictionary>
+                                                                                                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                <While.Condition>[i &lt; array_of_tranform_data.Count]</While.Condition>
+                                                                                                                                                <Sequence sap:VirtualizedContainerService.HintSize="524.8,677.6" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                                                                                                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                                                    </scg:Dictionary>
+                                                                                                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                  <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'editable text'" EmptyField="False" sap:VirtualizedContainerService.HintSize="483.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="False" Text="[mapping_arr(i).ToString() + &quot; &quot; + &quot; &quot;+ input_array(i).ToString() + &quot;     &lt;Transform&gt;     Converted to Value :&quot; + array_of_tranform_data(i).ToString() + Environment.NewLine]">
+                                                                                                                                                    <ui:TypeInto.Target>
+                                                                                                                                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="921a7b3df1735015fc179e14c11e7333" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='*Untitled - Notepad*' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
+                                                                                                                                                        <ui:Target.TimeoutMS>
+                                                                                                                                                          <InArgument x:TypeArguments="x:Int32" />
+                                                                                                                                                        </ui:Target.TimeoutMS>
+                                                                                                                                                        <ui:Target.WaitForReady>
+                                                                                                                                                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                                                                                                                        </ui:Target.WaitForReady>
+                                                                                                                                                      </ui:Target>
+                                                                                                                                                    </ui:TypeInto.Target>
+                                                                                                                                                  </ui:TypeInto>
+                                                                                                                                                  <Assign sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                                                                                                                                    <Assign.To>
+                                                                                                                                                      <OutArgument x:TypeArguments="x:String">[return_inference_string]</OutArgument>
+                                                                                                                                                    </Assign.To>
+                                                                                                                                                    <Assign.Value>
+                                                                                                                                                      <InArgument x:TypeArguments="x:String">[return_inference_string +array_of_tranform_data(i).ToString()]</InArgument>
+                                                                                                                                                    </Assign.Value>
+                                                                                                                                                  </Assign>
+                                                                                                                                                  <If Condition="[i &lt;&gt; (array_of_tranform_data.Count - 1)]" sap:VirtualizedContainerService.HintSize="483.2,209.6" sap2010:WorkflowViewState.IdRef="If_3">
+                                                                                                                                                    <If.Then>
+                                                                                                                                                      <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                                                                                                                                        <Assign.To>
+                                                                                                                                                          <OutArgument x:TypeArguments="x:String">[return_inference_string]</OutArgument>
+                                                                                                                                                        </Assign.To>
+                                                                                                                                                        <Assign.Value>
+                                                                                                                                                          <InArgument x:TypeArguments="x:String">[return_inference_string + ","]</InArgument>
+                                                                                                                                                        </Assign.Value>
+                                                                                                                                                      </Assign>
+                                                                                                                                                    </If.Then>
+                                                                                                                                                  </If>
+                                                                                                                                                  <Assign sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                                                                                                                                    <Assign.To>
+                                                                                                                                                      <OutArgument x:TypeArguments="x:Int32">[i]</OutArgument>
+                                                                                                                                                    </Assign.To>
+                                                                                                                                                    <Assign.Value>
+                                                                                                                                                      <InArgument x:TypeArguments="x:Int32">[i + 1]</InArgument>
+                                                                                                                                                    </Assign.Value>
+                                                                                                                                                  </Assign>
+                                                                                                                                                </Sequence>
+                                                                                                                                              </While>
+                                                                                                                                              <FlowStep.Next>
+                                                                                                                                                <FlowStep x:Name="__ReferenceID33">
+                                                                                                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                                      <av:Point x:Key="ShapeLocation">720,913.6</av:Point>
+                                                                                                                                                      <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+                                                                                                                                                    </scg:Dictionary>
+                                                                                                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                  <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Printing inference string" EmptyField="False" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="False" Text="[&quot;Inference Value:&quot; + return_inference_string.ToString() + Environment.NewLine + &quot;Sending Features for Inferencing.........................&quot; + Environment.NewLine]">
+                                                                                                                                                    <ui:TypeInto.Target>
+                                                                                                                                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="921a7b3df1735015fc179e14c11e7333" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='*Untitled - Notepad*' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
+                                                                                                                                                        <ui:Target.TimeoutMS>
+                                                                                                                                                          <InArgument x:TypeArguments="x:Int32" />
+                                                                                                                                                        </ui:Target.TimeoutMS>
+                                                                                                                                                        <ui:Target.WaitForReady>
+                                                                                                                                                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                                                                                                                        </ui:Target.WaitForReady>
+                                                                                                                                                      </ui:Target>
+                                                                                                                                                    </ui:TypeInto.Target>
+                                                                                                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                                                                      </scg:Dictionary>
+                                                                                                                                                    </sap:WorkflowViewStateService.ViewState>
+                                                                                                                                                  </ui:TypeInto>
+                                                                                                                                                </FlowStep>
+                                                                                                                                              </FlowStep.Next>
+                                                                                                                                            </FlowStep>
+                                                                                                                                          </FlowStep.Next>
+                                                                                                                                        </FlowStep>
+                                                                                                                                      </FlowStep.Next>
+                                                                                                                                    </FlowStep>
+                                                                                                                                  </FlowStep.Next>
+                                                                                                                                </FlowStep>
+                                                                                                                              </FlowStep.Next>
+                                                                                                                            </FlowStep>
+                                                                                                                          </FlowStep.Next>
+                                                                                                                        </FlowStep>
+                                                                                                                      </FlowStep.Next>
+                                                                                                                    </FlowStep>
+                                                                                                                  </FlowStep.Next>
+                                                                                                                </FlowStep>
+                                                                                                              </FlowStep.Next>
+                                                                                                            </FlowStep>
+                                                                                                          </FlowStep.Next>
+                                                                                                        </FlowStep>
+                                                                                                      </FlowStep.Next>
+                                                                                                    </FlowStep>
+                                                                                                  </FlowStep.Next>
+                                                                                                </FlowStep>
+                                                                                              </FlowStep.Next>
+                                                                                            </FlowStep>
+                                                                                          </FlowStep.Next>
+                                                                                        </FlowStep>
+                                                                                      </FlowStep.Next>
+                                                                                    </FlowStep>
+                                                                                  </FlowStep.Next>
+                                                                                </FlowStep>
+                                                                              </FlowStep.Next>
+                                                                            </FlowStep>
+                                                                          </FlowStep.Next>
+                                                                        </FlowStep>
+                                                                      </FlowStep.Next>
+                                                                    </FlowStep>
+                                                                  </FlowStep.Next>
+                                                                </FlowStep>
+                                                              </FlowStep.Next>
+                                                            </FlowStep>
+                                                          </FlowStep.Next>
+                                                        </FlowStep>
+                                                      </FlowStep.Next>
+                                                    </FlowStep>
+                                                  </FlowStep.Next>
+                                                </FlowStep>
+                                              </FlowStep.Next>
+                                            </FlowStep>
+                                          </FlowStep.Next>
+                                        </FlowStep>
+                                      </FlowStep.Next>
+                                    </FlowStep>
+                                  </FlowStep.Next>
+                                </FlowStep>
+                              </FlowStep.Next>
+                            </FlowStep>
+                          </FlowStep.Next>
+                        </FlowStep>
+                      </FlowStep.Next>
+                    </FlowStep>
+                  </FlowStep.Next>
+                </FlowStep>
+              </FlowStep.Next>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
+    <x:Reference>__ReferenceID9</x:Reference>
+    <x:Reference>__ReferenceID10</x:Reference>
+    <x:Reference>__ReferenceID11</x:Reference>
+    <x:Reference>__ReferenceID12</x:Reference>
+    <x:Reference>__ReferenceID13</x:Reference>
+    <x:Reference>__ReferenceID14</x:Reference>
+    <x:Reference>__ReferenceID15</x:Reference>
+    <x:Reference>__ReferenceID16</x:Reference>
+    <x:Reference>__ReferenceID17</x:Reference>
+    <x:Reference>__ReferenceID18</x:Reference>
+    <x:Reference>__ReferenceID19</x:Reference>
+    <x:Reference>__ReferenceID20</x:Reference>
+    <x:Reference>__ReferenceID21</x:Reference>
+    <x:Reference>__ReferenceID22</x:Reference>
+    <x:Reference>__ReferenceID23</x:Reference>
+    <x:Reference>__ReferenceID24</x:Reference>
+    <x:Reference>__ReferenceID25</x:Reference>
+    <x:Reference>__ReferenceID26</x:Reference>
+    <x:Reference>__ReferenceID27</x:Reference>
+    <x:Reference>__ReferenceID28</x:Reference>
+    <x:Reference>__ReferenceID29</x:Reference>
+    <x:Reference>__ReferenceID30</x:Reference>
+    <x:Reference>__ReferenceID31</x:Reference>
+    <x:Reference>__ReferenceID32</x:Reference>
+    <x:Reference>__ReferenceID33</x:Reference>
+    <x:Reference>__ReferenceID34</x:Reference>
+  </Flowchart>
+</Activity>
