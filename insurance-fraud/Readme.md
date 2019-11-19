@@ -20,6 +20,12 @@ The returned response is the inference result.
 **Note: 
 If you intend to customize the workflow by leveraging this demo, do replace "ReadClaimForms.xaml" with your respective claim forms extraction workflow. You can continue to use "GetInferenceResults.xaml" but remember to modify the POST request input variable.** 
  
+## How to Run the Workflow: 
+1. Download [distro.zip](https://github.com/skymindglobal/rpa-ai-template/releases/download/v1.0/distro.zip) and unzip to the root file directory.
+2. Download [data.zip](https://drive.google.com/open?id=18cN0s2eqy6FJDQsomx5eL0vBQg928x51) and unzip to the root file directory.
+3. Run Main.xaml
+
+
 ## Model Serving :  
 Konduit-Serving is a serving system and framework focused on deploying machine learning pipelines to production.  
 The strength of konduit model serving system is it able to serve wide varieties of python machine learning framework and DL4J framework. 
