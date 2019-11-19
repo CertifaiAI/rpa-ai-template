@@ -69,8 +69,8 @@ RPA workflow for Insurance fraud detection demo is created based on a readily av
 &nbsp;  
 ![Preserve Workflow (mandatory)](img/preserveworkflow.png "Preserve Workflow (mandatory)")  
 &nbsp;  
-"Initiate_Model_Server.xaml" is a mandatory workflow that needed to be initiated before any other workflow started. There are nothing much needed to be change in 
-"Initiate_Model_Server.xaml" workflow. if you are using your own python script to serve, please refer above "Model Serving" steps to understand how to configure your 
+"ConfigureKonduitServing.xaml" is a mandatory workflow that needed to be initiated before any other workflow started. There are nothing much needed to be change in 
+"ConfigureKonduitServing.xaml" workflow. if you are using your own python script to serve, please refer above "Model Serving" steps to understand how to configure your 
 own script in serving.  
 &nbsp;  
 ### Main.xaml Workflow :  
@@ -78,10 +78,10 @@ own script in serving.
 ![Main Workflow](img/mainworkflow.png "Main Worflow")  
 &nbsp;  
 This is the start up point of whole workflow. You can see that the very first workflow to start with always to initiate konduit model serving system.
-if you intended to create your own workflow, please do keep in mind that just leverage the "Initiate_Model_Server.xaml" and always start this workflow before any subsequence
+If you intended to create your own workflow, please do keep in mind that just leverage the "ConfigureKonduitServing.xaml" and always start this workflow before any subsequence
 workflow.  
 &nbsp;  
-### Read_Claims_forms workflow.xaml Workflow :  
+### ReadClaimForms.xaml Workflow :  
 &nbsp;  
 ![Read Claims forms Workflow](img/readclaimsform.png "Read Claims forms Workflow")  
 &nbsp;  
@@ -96,9 +96,8 @@ append all the features in an array list---> return the array list ---> sent to 
 &nbsp;  
 ![Client Prediction Workflow](img/serverprediction.png "Client Prediction Workflow")  
 &nbsp;  
-This workflow can be leverage as client https POST request workflow. The main function of this workflow is to sent a POST request to Konduit moder serving system 
-and get a prediction result back from the system (in json format). The changes will happen on the body of POST request and the endpoint variable (if you change your port). As you changes your script input and 
-and output serving variable, you will need to change the body of POST request (refer to Sample POST request input (json)).  
+This workflow can be leverage as client https POST request workflow. The main function of this workflow is to sent a POST request to Konduit moder serving system and get a prediction result back from the system (in json format). The changes will happen on the body of POST request and the endpoint variable (if you change your port).  
+As you changes your script input and output serving variable, you will need to change the body of POST request (refer to Sample POST request input (json)).  
 &nbsp;  
 
 # Reach us for RPAxAI workflow customization
