@@ -17,8 +17,8 @@ features extraction, data convertion and result display.
 It generates json format POST request and sent to model server, then it wait for server to return an response in json format.
 The returned response is the inference result.  
 
-**Take Note**  
-If you intend to customize the workflow by leveraging this demo, do replace "ReadClaimForms.xaml" with your respective claim forms extraction workflow. You can continue to use "GetInferenceResults.xaml" but remember to modify the POST request input variable.
+**Note: 
+If you intend to customize the workflow by leveraging this demo, do replace "ReadClaimForms.xaml" with your respective claim forms extraction workflow. You can continue to use "GetInferenceResults.xaml" but remember to modify the POST request input variable.** 
  
 ## Model Serving :  
 Konduit-Serving is a serving system and framework focused on deploying machine learning pipelines to production.  
@@ -43,8 +43,8 @@ You will notice that in the picture above consist of red boxes and green box. Th
 **Green box:**  
 - **PredictedClass** , **Confidence** &  **output** are the output variables that define when serving python script.  
 &nbsp;  
-**Note: These variables are necessary to be specified in the Konduit-Serving configuration file (.json)
-In this demo: The configuration file is named inference-fraud-config*.json**
+_Note: These variables are necessary to be specified in the Konduit-Serving configuration file (.json)
+In this demo: The configuration file is named inference-fraud-config*.json_
 &nbsp;  
 ### Example showing configuration file for Konduit-Serving  
 &nbsp;  
@@ -85,18 +85,16 @@ workflow.
 &nbsp;  
 ![Read Claims forms Workflow](img/readclaimsform.png "Read Claims forms Workflow")  
 &nbsp;  
-This Workflow is customize base on current available claims forms format. Please do note that this workflow is not generic workflow. You should create your own
-forms reading workflow to extract out features from your own forms format (web forms, PDF, excel and etc.). In this workflow, basically the main process incharge will be 
-extract data table (Get_each_value.xaml) from excel form (refer to Sample Forms image)---> map each extracted feature with pre-instant dictionary list(Transformation.xaml)--->perform normalization (Transformation.xaml) --->
-append all the features in an array list---> return the array list ---> sent to model server for inference (Konduit_model_server.xaml) ---> catagorize result(Result_Manipulation.xaml).  
+This Workflow is customize base on current available claim forms format. Please do note that this workflow is not generic workflow. You should create your own forms reading workflow to extract out features from your own forms format (web forms, PDF, excel and etc.).  
+In this workflow, basically the main process incharge will be extract data table (GetEachValue.xaml) from excel form (refer to Sample Forms image)---> map each extracted feature with pre-instant dictionary list(Transformation.xaml)--->perform normalization (Transformation.xaml) ---> append all the features in an array list---> return the array list ---> sent to Konduit-Serving for inference (GetInferenceResults.xaml) ---> catagorize result(TransformOutputData.xaml).  
 &nbsp;  
 ![Sample Forms](img/sampleform.png "Sample Forms")  
 &nbsp;  
-### Konduit_model_server.xaml Workflow :  
+### GetInferenceResults.xaml Workflow :  
 &nbsp;  
 ![Client Prediction Workflow](img/serverprediction.png "Client Prediction Workflow")  
 &nbsp;  
-This workflow can be leverage as client https POST request workflow. The main function of this workflow is to sent a POST request to Konduit moder serving system and get a prediction result back from the system (in json format). The changes will happen on the body of POST request and the endpoint variable (if you change your port).  
+This workflow can be leverage as client https POST request workflow. The main function of this workflow is to sent a POST request to Konduit-Serving system and get a prediction result back from the system (in json format). The changes will happen on the body of POST request and the endpoint variable (if you change your port).  
 As you changes your script input and output serving variable, you will need to change the body of POST request (refer to Sample POST request input (json)).  
 &nbsp;  
 
