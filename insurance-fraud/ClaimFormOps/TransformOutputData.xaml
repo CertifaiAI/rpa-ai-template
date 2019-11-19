@@ -57,7 +57,6 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Result_Manipulation" sap:VirtualizedContainerService.HintSize="697.6,1412.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -124,7 +123,7 @@
               </sap:WorkflowViewStateService.ViewState>
               <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="50" DelayMS="3000" DisplayName="Type Into 'editable text'" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="False" Text="[&quot;Prediction Class: &lt; &quot;+Predicted_Label + &quot; &gt; , With Confidence: &quot; + Confidence.ToString()]">
                 <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="e3b0c4e94f8a6fc861f4dbcfb74a1cce" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='Untitled - Notepad' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="e3b0c4e94f8a6fc861f4dbcfb74a1cce" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='*Untitled - Notepad*' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
                     <ui:Target.TimeoutMS>
                       <InArgument x:TypeArguments="x:Int32" />
                     </ui:Target.TimeoutMS>
@@ -186,9 +185,9 @@
                       <av:PointCollection x:Key="ConnectorLocation">320,1206.4 320,1236.4 330,1236.4 330,1263.6</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="50" DelayMS="3000" DisplayName="Type Into&quot;Notepad&quot;" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="False" Text="[&quot;Classified Result as Class : &lt; &quot;+InputDialogResult + &quot; &gt; with Manual Selection.&quot;]">
+                  <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="50" DelayMS="3000" DisplayName="Type Into&quot;Notepad&quot;" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="False" Text="[&quot;Classified Result as Class : &lt; &quot;+InputDialogResult + &quot; &gt; with Manual Selection.&quot;]">
                     <ui:TypeInto.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="e3b0c4e94f8a6fc861f4dbcfb74a1cce" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='Untitled - Notepad' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="e3b0c4e94f8a6fc861f4dbcfb74a1cce" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='*Untitled - Notepad*' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>

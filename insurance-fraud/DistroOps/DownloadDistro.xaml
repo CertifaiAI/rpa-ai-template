@@ -60,7 +60,6 @@
       <AssemblyReference>UiPath.Java.Activities</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.IO.Compression</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="DownloadAndExtract" sap:VirtualizedContainerService.HintSize="375.2,1946.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -77,7 +76,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'Notepad'" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[&quot;Downloading distro.zip.................&quot; +  Environment.NewLine]">
       <ui:TypeInto.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="b6efb27560414293c463d581b7bb6334" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='Untitled - Notepad' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="b6efb27560414293c463d581b7bb6334" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='*Untitled - Notepad*' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -102,7 +101,7 @@
         <InArgument x:TypeArguments="s:DateTime">[DateTime.Now]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="FileDownloadIE workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="FileDownloadIE.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="FileDownloadIE workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="DistroOps\FileDownloadIE.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FileURL">https://github.com/KonduitAI/mailboxdetection-workflow/releases/tag/v1.1</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ExtractPath">[Directory.GetCurrentDirectory()]</InArgument>
@@ -126,7 +125,7 @@
     </Assign>
     <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'Notepad'" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[&quot;Total downloading time : &quot; + exec_time.ToString() + Environment.NewLine + &quot;Extracting downloaded file..................&quot; + Environment.NewLine]">
       <ui:TypeInto.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="041022d374fcce764234f6c85a4d1112" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='Untitled - Notepad' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="041022d374fcce764234f6c85a4d1112" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='*Untitled - Notepad*' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -166,7 +165,7 @@
     </Assign>
     <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'Notepad'" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[&quot;Total file extracting time : &quot; + exec_time.ToString() + Environment.NewLine + &quot;Delete temporary file..................&quot; + Environment.NewLine]">
       <ui:TypeInto.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="4fa0ba53ad4f0c51b451a950fdefd1d7" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='Untitled - Notepad' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="4fa0ba53ad4f0c51b451a950fdefd1d7" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='*Untitled - Notepad*' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -185,7 +184,7 @@
     </ui:Delete>
     <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'Notepad'" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="[&quot;Konduit serving file download completed.&quot; + Environment.NewLine]">
       <ui:TypeInto.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="4fa0ba53ad4f0c51b451a950fdefd1d7" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='Untitled - Notepad' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="4fa0ba53ad4f0c51b451a950fdefd1d7" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='*Untitled - Notepad*' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>

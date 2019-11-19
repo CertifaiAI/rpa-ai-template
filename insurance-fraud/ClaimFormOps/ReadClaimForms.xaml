@@ -55,7 +55,6 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Read_Claims_forms" sap:VirtualizedContainerService.HintSize="452,764" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -87,37 +86,19 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="OpenNotepad.exe workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="[argClaimOpsDir + &quot;OpenNotepad.xaml&quot;]">
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="OpenNotepad.exe workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ClaimFormOps\OpenNotepad.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <scg:Dictionary x:TypeArguments="x:String, Argument" />
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ReadExcel workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="[argClaimOpsDir + &quot;ReadExcel.xaml&quot;]">
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ReadExcel workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ClaimFormOps\ReadExcel.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="excel_path">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="file.ToString()">
-                    <mva:VisualBasicValue.Result>
-                      <OutArgument x:TypeArguments="x:String" />
-                    </mva:VisualBasicValue.Result>
-                  </mva:VisualBasicValue>
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="argClaimFormOpsPath">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argClaimOpsDir">
-                    <mva:VisualBasicValue.Result>
-                      <OutArgument x:TypeArguments="x:String" />
-                    </mva:VisualBasicValue.Result>
-                  </mva:VisualBasicValue>
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="argKonduitOpsPath_">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argKonduitOpsPath">
-                    <mva:VisualBasicValue.Result>
-                      <OutArgument x:TypeArguments="x:String" />
-                    </mva:VisualBasicValue.Result>
-                  </mva:VisualBasicValue>
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="excel_path">[file.ToString()]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="argClaimFormOpsPath">[argClaimOpsDir]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="argKonduitOpsPath_">[argKonduitOpsPath]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="CloseNotepad.exe workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="[argClaimOpsDir + &quot;CloseNotePad.xaml&quot;]">
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="CloseNotepad.exe workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="ClaimFormOps\CloseNotePad.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <scg:Dictionary x:TypeArguments="x:String, Argument" />
               </ui:InvokeWorkflowFile.Arguments>

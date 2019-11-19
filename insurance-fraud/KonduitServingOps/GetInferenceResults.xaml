@@ -59,7 +59,6 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>RestSharp</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap:VirtualizedContainerService.HintSize="416.8,940.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
@@ -70,21 +69,13 @@
     </sap:WorkflowViewStateService.ViewState>
     <Sequence DisplayName="Konduit_model_server" sap:VirtualizedContainerService.HintSize="375.2,848" sap2010:WorkflowViewState.IdRef="Sequence_1">
       <Sequence.Variables>
-        <Variable x:TypeArguments="x:String" Default="\\model\\insurance_fraud.pb" Name="modelpath" />
+        <Variable x:TypeArguments="x:String" Default="\\data\\insurance_fraud.pb" Name="modelpath" />
         <Variable x:TypeArguments="x:String" Name="body" />
         <Variable x:TypeArguments="x:String" Name="response" />
         <Variable x:TypeArguments="njl:JObject" Name="JsonResponse" />
         <Variable x:TypeArguments="x:String" Name="inference" />
         <Variable x:TypeArguments="x:String" Default="http://localhost:65322/raw/dictionary" Name="endpoint" />
-        <Variable x:TypeArguments="x:String" Name="Currentdir">
-          <Variable.Default>
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Directory.GetCurrentDirectory()">
-              <mva:VisualBasicValue.Result>
-                <OutArgument x:TypeArguments="x:String" />
-              </mva:VisualBasicValue.Result>
-            </mva:VisualBasicValue>
-          </Variable.Default>
-        </Variable>
+        <Variable x:TypeArguments="x:String" Default="[Directory.GetCurrentDirectory()]" Name="Currentdir" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -123,7 +114,7 @@
           <InArgument x:TypeArguments="x:String">["{""myinput"":""" + inference.ToString() + """,""model_path"":""" + modelpath + """}"]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:HttpClient AcceptFormat="JSON" Body="[body]" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Private: HTTP Request" EndPoint="[endpoint]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" Result="[response]" StatusCode="{x:Null}" TimeoutMS="60000" Username="{x:Null}">
+      <ui:HttpClient ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" Body="[body]" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="Private: HTTP Request" EndPoint="[endpoint]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Result="[response]" TimeoutMS="60000">
         <ui:HttpClient.Attachments>
           <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
         </ui:HttpClient.Attachments>
