@@ -26,17 +26,10 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">Welcome!</a>
+    <a class="navbar-brand mr-1" href="index.html">Welcome to Konduit RPA & AI demo!</a>
 
     <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <div class="input-group">
-        <div class="input-group-append">
-          </button>
-        </div>
-      </div>
-    </form>
-
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"></form>
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
     </ul>
@@ -46,24 +39,59 @@
   <div id="wrapper">
     <div id="content-wrapper">
       <div class="container-fluid">
-        <!-- Area Chart Example-->
+        <!-- Area Chart 1-->
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
-            Area Chart Example</div>
+            Average Stock Price</div>
           <div class="card-body">
-            <canvas id="myAreaChart" width="100%" height="30"></canvas>
+            <canvas id="average" width="100%" height="30"</canvas>
           </div>
         </div>
-
+		
+		<!-- Area Chart 2-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-chart-area"></i>
+            Opening Stock Price</div>
+          <div class="card-body">
+            <canvas id="open" width="100%" height="30"></canvas>
+          </div>
+        </div>
+		
+		<!-- Area Chart 3-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-chart-area"></i>
+            Highest Stock Price</div>
+          <div class="card-body">
+            <canvas id="high" width="100%" height="30"></canvas>
+          </div>
+        </div>
+		
+		<!-- Area Chart 4-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-chart-area"></i>
+            Lowest Stock Price</div>
+          <div class="card-body">
+            <canvas id="low" width="100%" height="30"></canvas>
+          </div>
+        </div>
+		
+		<!-- Area Chart 5-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-chart-area"></i>
+            Closing Stock Price</div>
+          <div class="card-body">
+            <canvas id="close" width="100%" height="30"></canvas>
+          </div>
+        </div>
       </div>
-      <!-- /.container-fluid -->
-
     </div>
-    <!-- /.content-wrapper -->
-
   </div>
-  <!-- /#wrapper -->
+
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
@@ -89,24 +117,13 @@
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Page level plugin JavaScript-->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-  <script src="vendor/datatables/jquery.dataTables.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="vendor/chart.js/myChart.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin.min.js"></script>
-
-  <!-- Demo scripts for this page-->
-  <script src="js/demo/datatables-demo.js"></script>
-  <script src="js/demo/chart-area-demo.js"></script>
 
 </body>
 
