@@ -23,6 +23,14 @@ function getclose(dir)
 {
 	return "UNIQUECLOSE";
 }
+function getvolume(dir)
+{
+	return "UNIQUEVOLUME"
+}
+function getadjclose(dir)
+{
+	return "UNIQUEADJ"
+}
 function getlabel(dir)
 {
 	return "UNIQUELABEL";
@@ -71,7 +79,7 @@ function renderChart(data, labels, chartname) {
     });
 	
 	for (i = 0; i < myChart.data.datasets[0].data.length; i++) {
-		if (i > 5) 
+		if (i > 49) 
 		{
 			bgcolor.push('#FF0000');
 		} 
@@ -90,11 +98,15 @@ $(document).ready(
 		highest = gethigh();
 		lowest = getlow();
 		closing = getclose();
+		adj = getadjclose();
+		volume = getvolume();
         labels =  getlabel();
         renderChart(average, labels, "average");
 		renderChart(opening, labels, "open");
 		renderChart(highest, labels, "high");
 		renderChart(lowest, labels, "low");
 		renderChart(closing, labels, "close");
+		renderChart(volume, labels, "volume");
+		renderChart(adj, labels, "adjusted close");
     }
 );

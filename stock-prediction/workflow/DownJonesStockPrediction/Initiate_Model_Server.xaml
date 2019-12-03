@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Start_Konduit_Serving" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="856,1299.2" sap2010:WorkflowViewState.IdRef="Start_Konduit_Serving_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Start_Konduit_Serving" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="856,1339.2" sap2010:WorkflowViewState.IdRef="Start_Konduit_Serving_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -45,6 +45,7 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Start_Konduit_Serving" sap:VirtualizedContainerService.HintSize="836,1239.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -53,7 +54,7 @@
       <Variable x:TypeArguments="x:String" Name="javaFile" />
       <Variable x:TypeArguments="x:String" Name="args" />
       <Variable x:TypeArguments="x:String" Name="distroDir" />
-      <Variable x:TypeArguments="x:String" Default="inference-fraud-config.json" Name="KonduitServingJson" />
+      <Variable x:TypeArguments="x:String" Default="inference-stockpredict-config.json" Name="KonduitServingJson" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -81,7 +82,7 @@
         <OutArgument x:TypeArguments="x:String">[args]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String" xml:space="preserve">["-d64 -cp  " + distroDir + "\konduit-serving.jar ai.konduit.serving.configprovider.KonduitServingMain "  + " --configPath "  + Directory.GetCurrentDirectory()  + "\Konduit_Config\" + KonduitServingJson]</InArgument>
+        <InArgument x:TypeArguments="x:String" xml:space="preserve">["-d64 -cp  " + distroDir + "\konduit-serving.jar ai.konduit.serving.configprovider.KonduitServingMain "  + " --configPath "  + Directory.GetCurrentDirectory()  + "\config\" + KonduitServingJson]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:PathExists DisplayName="Checking Pipelines Folder Exits" Exists="[distroExists]" sap:VirtualizedContainerService.HintSize="794.4,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[distroDir]" PathType="Folder" />

@@ -23,7 +23,7 @@
         "extraInputs" : { },
         "modelConfigType" : null,
         "pythonCode" : null,
-        "pythonCodePath" : "REPLACESCRIPT\\\\stockinference.py",
+        "pythonCodePath" : "C:\\\\Users\\\\TUF\\\\Desktop\\\\rpa_ai_template\\\\stock-prediction\\\\workflow\\\\DownJonesStockPrediction\\\\script\\\\stockinference.py",
         "pythonInputs" : {
           "datein" : "STR",
           "openin" : "STR",
@@ -45,7 +45,7 @@
 		  "volumes": "STR", 
 		  "avgs"   : "STR"
         },
-        "pythonPath" : "REPLACE\\conda\\python37.zip;REPLACE\\conda\\DLLs;REPLACE\\conda\\lib;REPLACE\\conda;;REPLACE\\conda\\lib\\site-packages;REPLACE\\conda\\lib\\site-packages\\win32;REPLACE\\conda\\lib\\site-packages\\win32\\lib;REPLACE\\conda\\lib\\site-packages\\Pythonwin;REPLACE\\conda\\lib\\site-packages\\IPython\\extensions;REPLACE\\scripts",
+        "pythonPath" : "C:\\\\Users\\\\TUF\\\\Desktop\\\\rpa_ai_template\\\\stock-prediction\\\\workflow\\\\DownJonesStockPrediction\\\\distro\\conda\\python37.zip;C:\\\\Users\\\\TUF\\\\Desktop\\\\rpa_ai_template\\\\stock-prediction\\\\workflow\\\\DownJonesStockPrediction\\\\distro\\conda\\DLLs;C:\\\\Users\\\\TUF\\\\Desktop\\\\rpa_ai_template\\\\stock-prediction\\\\workflow\\\\DownJonesStockPrediction\\\\distro\\conda\\lib;C:\\\\Users\\\\TUF\\\\Desktop\\\\rpa_ai_template\\\\stock-prediction\\\\workflow\\\\DownJonesStockPrediction\\\\distro\\conda;;C:\\\\Users\\\\TUF\\\\Desktop\\\\rpa_ai_template\\\\stock-prediction\\\\workflow\\\\DownJonesStockPrediction\\\\distro\\conda\\lib\\site-packages;C:\\\\Users\\\\TUF\\\\Desktop\\\\rpa_ai_template\\\\stock-prediction\\\\workflow\\\\DownJonesStockPrediction\\\\distro\\conda\\lib\\site-packages\\win32;C:\\\\Users\\\\TUF\\\\Desktop\\\\rpa_ai_template\\\\stock-prediction\\\\workflow\\\\DownJonesStockPrediction\\\\distro\\conda\\lib\\site-packages\\win32\\lib;C:\\\\Users\\\\TUF\\\\Desktop\\\\rpa_ai_template\\\\stock-prediction\\\\workflow\\\\DownJonesStockPrediction\\\\distro\\conda\\lib\\site-packages\\Pythonwin;C:\\\\Users\\\\TUF\\\\Desktop\\\\rpa_ai_template\\\\stock-prediction\\\\workflow\\\\DownJonesStockPrediction\\\\distro\\conda\\lib\\site-packages\\IPython\\extensions;C:\\\\Users\\\\TUF\\\\Desktop\\\\rpa_ai_template\\\\stock-prediction\\\\workflow\\\\DownJonesStockPrediction\\\\distro\\scripts",
         "returnAllInputs" : false,
         "tensorDataTypesConfig" : null
       }

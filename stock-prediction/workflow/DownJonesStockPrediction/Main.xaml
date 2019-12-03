@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="496.8,1285.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="395.2,1239.2" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -23,6 +23,8 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
       <x:String>System.Xml.Serialization</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -46,9 +48,11 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="476.8,1225.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="375.2,1139.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="datadir" />
       <Variable x:TypeArguments="s:String[]" Name="Date_50" />
@@ -67,34 +71,31 @@
       <Variable x:TypeArguments="x:String" Name="adjstr" />
       <Variable x:TypeArguments="x:String" Name="volumestr" />
       <Variable x:TypeArguments="x:String" Name="averagestr" />
+      <Variable x:TypeArguments="x:String" Name="gdate" />
+      <Variable x:TypeArguments="x:String" Name="gopen" />
+      <Variable x:TypeArguments="x:String" Name="ghigh" />
+      <Variable x:TypeArguments="x:String" Name="glow" />
+      <Variable x:TypeArguments="x:String" Name="gclose" />
+      <Variable x:TypeArguments="x:String" Name="gadj" />
+      <Variable x:TypeArguments="x:String" Name="gvolume" />
+      <Variable x:TypeArguments="x:String" Name="gaverage" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,259.2" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,180.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Initiate_Model_Server workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Initiate_Model_Server.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <scg:Dictionary x:TypeArguments="x:String, Argument" />
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="scrapDJdatav2 workflow" sap:VirtualizedContainerService.HintSize="435.2,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="scrapDJdatav2.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Initiate_Model_Server workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Initiate_Model_Server.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="scrapDJdatav2 workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="scrapDJdatav2.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:String" x:Key="todaydatacsv">[datadir]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="readstockdata workflow" sap:VirtualizedContainerService.HintSize="435.2,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="readstockdata.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="readstockdata workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="readstockdata.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="csvdir">[datadir]</InArgument>
         <OutArgument x:TypeArguments="s:String[]" x:Key="date_arr">[Date_50]</OutArgument>
@@ -107,7 +108,7 @@
         <OutArgument x:TypeArguments="s:Double[]" x:Key="average_arr">[Average_50]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="TransformData workflow" sap:VirtualizedContainerService.HintSize="435.2,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="TransformData.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="TransformData workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="TransformData.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="s:String[]" x:Key="date_">[Date_50]</InArgument>
         <InArgument x:TypeArguments="s:Double[]" x:Key="open_">[Open_50]</InArgument>
@@ -127,7 +128,7 @@
         <OutArgument x:TypeArguments="x:String" x:Key="return_average">[averagestr]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="KonduitPrediction workflow" sap:VirtualizedContainerService.HintSize="435.2,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="KonduitPrediction.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="KonduitPrediction workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="KonduitPrediction.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="date_in">[datestr]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="open_in">[openstr]</InArgument>
@@ -137,24 +138,45 @@
         <InArgument x:TypeArguments="x:String" x:Key="adj_in">[adjstr]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="volume_in">[volumestr]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="average_in">[averagestr]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="date_out">[gdate]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="open_out">[gopen]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="high_out">[ghigh]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="low_out">[glow]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="close_out">[gclose]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="adj_out">[gadj]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="volume_out">[gvolume]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="average_out">[gaverage]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,259.2" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,180.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ConfigureJScript workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ConfigureJScript.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <scg:Dictionary x:TypeArguments="x:String, Argument" />
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="435.2,22.4" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[datadir]" />
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ConfigureJScript workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ConfigureJScript.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="high">["[" + ghigh + "]"]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="average">["[" + gaverage+ "]"]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="opening">["[" + gopen + "]"]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="low_">["[" + glow + "]"]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="closing">["[" + gclose + "]"]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="volume">["[" + gvolume + "]"]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="dates">["[HERE" + gdate + "HERE]"]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="adj">["[" + gadj + "]"]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="ConfigureHTML workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="ConfigureHTML.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="date_str">[gdate]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="open_str">[gopen]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="high_str">[ghigh]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="low_str">[glow]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="close_str">[gclose]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="adj_str">[gadj]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="volume_str">[gvolume]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="average_str">[gaverage]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[datadir]" />
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="DisplayGraph workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="DisplayGraph.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
   </Sequence>
 </Activity>

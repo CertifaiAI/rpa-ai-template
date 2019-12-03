@@ -56,7 +56,23 @@ for idx, val in enumerate(opentemp):
 for j in range(3):
     tmr = NULL
     tmr = datetemp[0] + timedelta(days=1)
-    datetemp.insert(0, tmr)
+    print("original tmr: ", tmr)
+    if tmr.weekday() < 5:
+        datetemp.insert(0, tmr)
+        print("Is Weekday: ", tmr)
+        print("tmr.Weekday(): ", tmr.weekday())
+    elif tmr.weekday() == 5:
+        tmr = tmr + timedelta(days=2)
+        datetemp.insert(0, tmr)
+        print("Is Saturday: ", tmr)
+        print("tmr.Weekday(): ", tmr.weekday())
+    elif tmr.weekday() == 6:
+        tmr = tmr + timedelta(days=1)
+        datetemp.insert(0, tmr)
+        datetemp.insert(0, tmr)
+        print("Is Sunday: ", tmr)
+        print("tmr.Weekday(): ", tmr.weekday())
+print(len(datetemp))
 
 for k in range(len(datetemp)):
     datetemp[k] = str(datetemp[k])
@@ -72,7 +88,7 @@ np_average = np.array(averagetemp, dtype=float).reshape(50,1)
 inference_np = np.concatenate((np_open, np_high, np_low, np_close, np_adj, np_volume, np_average), axis=1)
 result_np = copy.copy(inference_np)
 
-model = load_model(r"C:\Users\TUF\Desktop\Dataset\model\stock_model.h5")
+model = load_model(model_path)
  
 for ii in range(3):
     output_ = NULL

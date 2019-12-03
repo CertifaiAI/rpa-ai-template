@@ -19,10 +19,10 @@
         "C:\\Users\\TUF\\.nuget\\packages\\csvhelper/2.13.5\\lib/net40-client/CsvHelper.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\documentformat.openxml/2.5.0\\lib/DocumentFormat.OpenXml.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\microsoft.visualstudio.ole.interop/7.10.6071\\lib/Microsoft.VisualStudio.OLE.Interop.dll",
-        "C:\\Users\\TUF\\.nuget\\packages\\npoi/2.4.1\\lib/net45/NPOI.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\npoi/2.4.1\\lib/net45/NPOI.OOXML.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\npoi/2.4.1\\lib/net45/NPOI.OpenXml4Net.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\npoi/2.4.1\\lib/net45/NPOI.OpenXmlFormats.dll",
+        "C:\\Users\\TUF\\.nuget\\packages\\npoi/2.4.1\\lib/net45/NPOI.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\sharpziplib/1.0.0\\lib/net45/ICSharpCode.SharpZipLib.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\uipath.excel.activities/2.7.1-ce\\lib/net461/UiPath.Excel.Activities.Design.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\uipath.excel.activities/2.7.1-ce\\lib/net461/UiPath.Excel.Activities.dll",
@@ -78,10 +78,10 @@
       },
       "Assemblies": [
         "C:\\Users\\TUF\\.nuget\\packages\\avalonedit/5.0.3\\lib/Net40/ICSharpCode.AvalonEdit.dll",
-        "C:\\Users\\TUF\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.AvalonDock.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.AvalonDock.Themes.Aero.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll",
+        "C:\\Users\\TUF\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.AvalonDock.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.DataGrid.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.Toolkit.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\humanizer.core/2.4.2\\lib/netstandard2.0/Humanizer.dll",
@@ -111,11 +111,25 @@
         "C:\\Users\\TUF\\.nuget\\packages\\uipath.vision/1.8.1\\lib/net452/UiPath.Vision.AbbyyFRECommon.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\uipath.vision/1.8.1\\lib/net452/UiPath.Vision.AzureComputerVision.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\uipath.vision/1.8.1\\lib/net452/UiPath.Vision.Core.dll",
-        "C:\\Users\\TUF\\.nuget\\packages\\uipath.vision/1.8.1\\lib/net452/UiPath.Vision.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\uipath.vision/1.8.1\\lib/net452/UiPath.Vision.GoogleCloud.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\uipath.vision/1.8.1\\lib/net452/UiPath.Vision.Microsoft.dll",
         "C:\\Users\\TUF\\.nuget\\packages\\uipath.vision/1.8.1\\lib/net452/UiPath.Vision.MicrosoftCloud.dll",
-        "C:\\Users\\TUF\\.nuget\\packages\\uipath.vision/1.8.1\\lib/net452/UiPath.Vision.Tesseract.dll"
+        "C:\\Users\\TUF\\.nuget\\packages\\uipath.vision/1.8.1\\lib/net452/UiPath.Vision.Tesseract.dll",
+        "C:\\Users\\TUF\\.nuget\\packages\\uipath.vision/1.8.1\\lib/net452/UiPath.Vision.dll"
+      ]
+    },
+    {
+      "Package": {
+        "Id": "UiPath.WebAPI.Activities",
+        "Version": "1.4.4"
+      },
+      "Assemblies": [
+        "C:\\Users\\TUF\\.nuget\\packages\\avalonedit/5.0.3\\lib/Net40/ICSharpCode.AvalonEdit.dll",
+        "C:\\Users\\TUF\\.nuget\\packages\\newtonsoft.json/11.0.2\\lib/net45/Newtonsoft.Json.dll",
+        "C:\\Users\\TUF\\.nuget\\packages\\restsharp/106.3.1\\lib/net452/RestSharp.dll",
+        "C:\\Users\\TUF\\.nuget\\packages\\uipath.webapi.activities/1.4.4\\lib/net452/UiPath.Web.Activities.Design.dll",
+        "C:\\Users\\TUF\\.nuget\\packages\\uipath.webapi.activities/1.4.4\\lib/net452/UiPath.Web.Activities.dll",
+        "C:\\Users\\TUF\\.nuget\\packages\\uipath.webapi.activities/1.4.4\\lib/net452/UiPath.Web.dll"
       ]
     }
   ],
@@ -215,6 +229,11 @@
           "Item2": "[1.0.0, )"
         }
       ]
+    },
+    "RestSharp": {
+      "Id": "RestSharp",
+      "Version": "106.3.1",
+      "Dependencies": []
     },
     "SharpZipLib": {
       "Id": "SharpZipLib",
@@ -351,6 +370,24 @@
         {
           "Item1": "UiPath.OCR.Contracts",
           "Item2": "[2.2.1, )"
+        }
+      ]
+    },
+    "UiPath.WebAPI.Activities": {
+      "Id": "UiPath.WebAPI.Activities",
+      "Version": "1.4.4",
+      "Dependencies": [
+        {
+          "Item1": "AvalonEdit",
+          "Item2": "[5.0.3, )"
+        },
+        {
+          "Item1": "Newtonsoft.Json",
+          "Item2": "[11.0.2, )"
+        },
+        {
+          "Item1": "RestSharp",
+          "Item2": "[106.3.1, )"
         }
       ]
     }
