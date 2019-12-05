@@ -1,0 +1,59 @@
+{
+  "pipelineSteps" : [ {
+    "@type" : "PythonPipelineStep",
+    "affectedInputNames" : [ ],
+    "affectedOutputNames" : [ ],
+    "inputColumnNames" : {
+      "default" : ["data_path" , "model_path" , "workspace_path" ]
+    },
+    "inputNames" : [ "default" ],
+    "inputSchemas" : {
+      "default" : [ "String" , "String" , "String"]
+    },
+    "outputColumnNames" : {
+      "default" : [ "result" ]
+    },
+    "outputNames" : [ ],
+    "outputSchemas" : {
+      "default" : [ "String" ]
+    },
+    "pythonConfigs" : {
+      "default" : {
+        "@type" : "PythonConfig",
+        "extraInputs" : { },
+        "modelConfigType" : null,
+        "pythonCode" : null,
+        "pythonCodePath" : "C:\\\\Users\\\\zulhu\\\\Desktop\\\\rpa-ai-template\\\\rpa-ai-template\\\\customer-satisfaction-prediction\\scripts\\predict_exec.py",
+        "pythonInputs" : {
+          "data_path" : "STR",
+          "model_path" : "STR",
+          "workspace_path" : "STR"
+        },
+        "pythonOutputs" : {
+          "result" : "STR"
+        },
+        "pythonPath" : "C:\\\\Users\\\\zulhu\\\\Desktop\\\\rpa-ai-template\\\\rpa-ai-template\\\\customer-satisfaction-prediction\\distro\\conda\\python37.zip;C:\\\\Users\\\\zulhu\\\\Desktop\\\\rpa-ai-template\\\\rpa-ai-template\\\\customer-satisfaction-prediction\\distro\\conda\\DLLs;C:\\\\Users\\\\zulhu\\\\Desktop\\\\rpa-ai-template\\\\rpa-ai-template\\\\customer-satisfaction-prediction\\distro\\conda\\lib;C:\\\\Users\\\\zulhu\\\\Desktop\\\\rpa-ai-template\\\\rpa-ai-template\\\\customer-satisfaction-prediction\\distro\\conda;;C:\\\\Users\\\\zulhu\\\\Desktop\\\\rpa-ai-template\\\\rpa-ai-template\\\\customer-satisfaction-prediction\\distro\\conda\\lib\\site-packages;C:\\\\Users\\\\zulhu\\\\Desktop\\\\rpa-ai-template\\\\rpa-ai-template\\\\customer-satisfaction-prediction\\distro\\conda\\lib\\site-packages\\win32;C:\\\\Users\\\\zulhu\\\\Desktop\\\\rpa-ai-template\\\\rpa-ai-template\\\\customer-satisfaction-prediction\\distro\\conda\\lib\\site-packages\\win32\\lib;C:\\\\Users\\\\zulhu\\\\Desktop\\\\rpa-ai-template\\\\rpa-ai-template\\\\customer-satisfaction-prediction\\distro\\conda\\lib\\site-packages\\Pythonwin;C:\\\\Users\\\\zulhu\\\\Desktop\\\\rpa-ai-template\\\\rpa-ai-template\\\\customer-satisfaction-prediction\\distro\\conda\\lib\\site-packages\\IPython\\extensions;C:\\\\Users\\\\zulhu\\\\Desktop\\\\rpa-ai-template\\\\rpa-ai-template\\\\customer-satisfaction-prediction\\distro\\scripts",
+        "returnAllInputs" : false,
+        "tensorDataTypesConfig" : null
+      }
+    }
+  } ],
+  "servingConfig" : {
+    "httpPort" : 1103,
+    "inputDataType" : "IMAGE",
+    "listenHost" : "localhost",
+    "logTimings" : false,
+    "outputDataType" : "JSON",
+    "parallelInferenceConfig" : {
+      "batchLimit" : 32,
+      "inferenceMode" : "BATCHED",
+      "maxTrainEpochs" : 1,
+      "queueLimit" : 64,
+      "vertxConfigJson" : null,
+      "workers" : 1
+    },
+    "predictionType" : "RAW",
+    "pubSubConfig" : null,
+    "uploadsDirectory" : "file-uploads/"
+  }
+}

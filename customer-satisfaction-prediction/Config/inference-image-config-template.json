@@ -1,0 +1,59 @@
+{
+  "pipelineSteps" : [ {
+    "@type" : "PythonPipelineStep",
+    "affectedInputNames" : [ ],
+    "affectedOutputNames" : [ ],
+    "inputColumnNames" : {
+      "default" : ["data_path" , "model_path" , "workspace_path" ]
+    },
+    "inputNames" : [ "default" ],
+    "inputSchemas" : {
+      "default" : [ "String" , "String" , "String"]
+    },
+    "outputColumnNames" : {
+      "default" : [ "result" ]
+    },
+    "outputNames" : [ ],
+    "outputSchemas" : {
+      "default" : [ "String" ]
+    },
+    "pythonConfigs" : {
+      "default" : {
+        "@type" : "PythonConfig",
+        "extraInputs" : { },
+        "modelConfigType" : null,
+        "pythonCode" : null,
+        "pythonCodePath" : "REPLACE\\scripts\\predict_exec.py",
+        "pythonInputs" : {
+          "data_path" : "STR",
+          "model_path" : "STR",
+          "workspace_path" : "STR"
+        },
+        "pythonOutputs" : {
+          "result" : "STR"
+        },
+        "pythonPath" : "REPLACE\\distro\\conda\\python37.zip;REPLACE\\distro\\conda\\DLLs;REPLACE\\distro\\conda\\lib;REPLACE\\distro\\conda;;REPLACE\\distro\\conda\\lib\\site-packages;REPLACE\\distro\\conda\\lib\\site-packages\\win32;REPLACE\\distro\\conda\\lib\\site-packages\\win32\\lib;REPLACE\\distro\\conda\\lib\\site-packages\\Pythonwin;REPLACE\\distro\\conda\\lib\\site-packages\\IPython\\extensions;REPLACE\\distro\\scripts",
+        "returnAllInputs" : false,
+        "tensorDataTypesConfig" : null
+      }
+    }
+  } ],
+  "servingConfig" : {
+    "httpPort" : 1103,
+    "inputDataType" : "IMAGE",
+    "listenHost" : "localhost",
+    "logTimings" : false,
+    "outputDataType" : "JSON",
+    "parallelInferenceConfig" : {
+      "batchLimit" : 32,
+      "inferenceMode" : "BATCHED",
+      "maxTrainEpochs" : 1,
+      "queueLimit" : 64,
+      "vertxConfigJson" : null,
+      "workers" : 1
+    },
+    "predictionType" : "RAW",
+    "pubSubConfig" : null,
+    "uploadsDirectory" : "file-uploads/"
+  }
+}

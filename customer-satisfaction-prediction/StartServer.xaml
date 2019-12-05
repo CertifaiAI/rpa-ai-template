@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="StartProcess" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="580.8,1462.4" sap2010:WorkflowViewState.IdRef="StartProcess_2" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="StartProcess" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="690.4,3298.4" sap2010:WorkflowViewState.IdRef="StartProcess_2" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -51,7 +51,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Start Server" sap:VirtualizedContainerService.HintSize="560.8,1402.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Start Server" sap:VirtualizedContainerService.HintSize="670.4,3198.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="distroExists" />
       <Variable x:TypeArguments="x:String" Default="[distroDir + &quot;\jdk\bin\java.exe -d64 -cp ai.skymind.pipelines.configprovider.PipelineServerMain &quot; + distroDir + &quot;\pipelines.jar&quot;]" Name="javaFile" />
@@ -59,13 +59,22 @@
       <Variable x:TypeArguments="x:String" Default="[Directory.GetCurrentDirectory()  +  &quot;\distro&quot;]" Name="distroDir" />
       <Variable x:TypeArguments="x:String" Name="condabin" />
       <Variable x:TypeArguments="x:String" Name="condacmd" />
+      <Variable x:TypeArguments="x:String" Name="workspaceDir" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign the current directory and distribution path" sap:VirtualizedContainerService.HintSize="519.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign the current directory and distribution path" sap:VirtualizedContainerService.HintSize="628.8,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[workspaceDir]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Directory.GetCurrentDirectory()]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign the current directory and distribution path" sap:VirtualizedContainerService.HintSize="628.8,60" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[distroDir]</OutArgument>
       </Assign.To>
@@ -73,7 +82,7 @@
         <InArgument x:TypeArguments="x:String" xml:space="preserve">[Directory.GetCurrentDirectory()  +  "\distro"]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Set the absolute path of the java executable" sap:VirtualizedContainerService.HintSize="519.2,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Set the absolute path of the java executable" sap:VirtualizedContainerService.HintSize="628.8,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[javaFile]</OutArgument>
       </Assign.To>
@@ -81,15 +90,15 @@
         <InArgument x:TypeArguments="x:String">[distroDir + "\jdk\bin\java.exe"]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Set the arguments for running the server" sap:VirtualizedContainerService.HintSize="519.2,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="Set the arguments for running the server" sap:VirtualizedContainerService.HintSize="628.8,60" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[args]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String" xml:space="preserve">["-d64 -cp  " + distroDir + "\konduit-serving.jar ai.konduit.serving.configprovider.KonduitServingMain"  + " --configPath "  + distroDir + "\inference-image-config.json"]</InArgument>
+        <InArgument x:TypeArguments="x:String" xml:space="preserve">["-d64 -cp  " + distroDir + "\konduit-serving.jar ai.konduit.serving.configprovider.KonduitServingMain"  + " --configPath "  + workspaceDir + "\Config\inference-image-config.json"]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Set the absolute path of condabin" sap:VirtualizedContainerService.HintSize="519.2,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign DisplayName="Set the absolute path of condabin" sap:VirtualizedContainerService.HintSize="628.8,60" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[condabin]</OutArgument>
       </Assign.To>
@@ -97,7 +106,7 @@
         <InArgument x:TypeArguments="x:String">[distroDir + "\conda\condabin"]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Set the command for conda activation" sap:VirtualizedContainerService.HintSize="519.2,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <Assign DisplayName="Set the command for conda activation" sap:VirtualizedContainerService.HintSize="628.8,60" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[condacmd]</OutArgument>
       </Assign.To>
@@ -105,8 +114,8 @@
         <InArgument x:TypeArguments="x:String">conda activate base</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:PathExists DisplayName="Ensure the server is downloaded, if not download it" Exists="[distroExists]" sap:VirtualizedContainerService.HintSize="519.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[distroDir]" PathType="Folder" />
-    <If Condition="[distroExists]" DisplayName="Start the server after setting it up if needed" sap:VirtualizedContainerService.HintSize="519.2,330.4" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:PathExists DisplayName="Ensure the server is downloaded, if not download it" Exists="[distroExists]" sap:VirtualizedContainerService.HintSize="628.8,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[distroDir]" PathType="Folder" />
+    <If Condition="[distroExists]" DisplayName="Start the server after setting it up if needed" sap:VirtualizedContainerService.HintSize="628.8,330.4" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Else>
         <Sequence sap:VirtualizedContainerService.HintSize="375.2,180.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
@@ -123,18 +132,128 @@
         </Sequence>
       </If.Else>
     </If>
-    <Sequence DisplayName="Configure Server" sap:VirtualizedContainerService.HintSize="519.2,308.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <Sequence DisplayName="Configure Server" sap:VirtualizedContainerService.HintSize="628.8,2004.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ConfigureServer workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="ConfigureServer.xaml">
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ConfigureServer workflow" sap:VirtualizedContainerService.HintSize="587.2,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="ConfigureServer.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          <InArgument x:TypeArguments="x:String" x:Key="in_workspacePath">[workspaceDir]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:StartProcess Arguments="[args]" ContinueOnError="{x:Null}" DisplayName="Start Process" FileName="[javaFile]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="StartProcess_5" WorkingDirectory="{x:Null}" />
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="587.2,1656" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="552,1577.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:OpenApplication ApplicationWindow="{x:Null}" Arguments="{x:Null}" TimeoutMS="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Open Application 'cmd.exe  Command Prompt'" FileName="C:\Windows\System32\cmd.exe" sap:VirtualizedContainerService.HintSize="510.4,1484.8" sap2010:WorkflowViewState.IdRef="OpenApplication_1" InformativeScreenshot="c43aa9192840699f6154d905a26a9b0b" Selector="&lt;wnd app='cmd.exe' cls='ConsoleWindowClass' omit:title='Command Prompt' /&gt;">
+              <ui:OpenApplication.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476.8,1337.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'cmd.exe  Command Prompt'" sap:VirtualizedContainerService.HintSize="435.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[&quot;cd &quot; + condabin]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" InformativeScreenshot="63987f1c1d9f90d40841f5b51d09cb94">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'cmd.exe  Command Prompt'" sap:VirtualizedContainerService.HintSize="435.2,156" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" InformativeScreenshot="a5fb4936de7a8deb79cf1ddd29035764">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,306.4" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,228" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'cmd.exe  Command Prompt'" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[condacmd]">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" InformativeScreenshot="63987f1c1d9f90d40841f5b51d09cb94">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                    </ui:CommentOut>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'cmd.exe  Command Prompt'" sap:VirtualizedContainerService.HintSize="435.2,156" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" InformativeScreenshot="a5fb4936de7a8deb79cf1ddd29035764">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'cmd.exe  Command Prompt'" sap:VirtualizedContainerService.HintSize="435.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[javaFile + &quot; &quot; + args]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" InformativeScreenshot="63987f1c1d9f90d40841f5b51d09cb94">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'cmd.exe  Command Prompt'" sap:VirtualizedContainerService.HintSize="435.2,156" sap2010:WorkflowViewState.IdRef="SendHotkey_3" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" InformativeScreenshot="a5fb4936de7a8deb79cf1ddd29035764">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                  </Sequence>
+                </ActivityAction>
+              </ui:OpenApplication.Body>
+            </ui:OpenApplication>
+          </Sequence>
+        </ui:CommentOut.Body>
+      </ui:CommentOut>
+      <ui:StartProcess WorkingDirectory="{x:Null}" Arguments="[args]" DisplayName="Start Process" FileName="[javaFile]" sap:VirtualizedContainerService.HintSize="587.2,88" sap2010:WorkflowViewState.IdRef="StartProcess_5" />
     </Sequence>
   </Sequence>
 </Activity>
